@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 09:16:36 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/10/17 14:38:05 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/04 19:11:42 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 struct s_mystruct{
 	char	**map;
+	char	**square_map;
 	char	**clrs_txtrs;
 	char	**file;
 	char	**content;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:06 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/03 14:39:05 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:34:18 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,11 +141,19 @@ void	pose_player(t_builders *param)
 
 int main(int ac, char **av)
 {
-	(void)ac;
+	int i = 0;
+
+	pars_part(ac, av);
+	
     t_builders *param;
 	t_coordinates	coor;
 	t_mystruct pars;
 	param = malloc(sizeof(t_builders));
+	while(param->pars->map[i])
+	{
+		printf ("%s", param->pars->map[i]);
+		i++;
+	}
 	param->coors = &coor;
 	param->pars = &pars;
 	param->moves = 0;
@@ -157,22 +165,12 @@ int main(int ac, char **av)
 	param->image_north = NULL;
 	param->up_down= -1;
 	param->view = 0;
-	pars_part(ac, av);
     // get_dementions(av[1], param);
 	// param->map = get_map(av[1], param);
-	int i = 0;
+	
 	int j = 0;
-	printf("0 : %s\n", param->pars->map[0]);
-	while(param->pars->map[i])
-	{
-		j = 0;
-		while(param->pars->map[i][j])
-		{
-			printf("-> %c\n", param->pars->map[i][j]);
-			j++;
-		}
-		i++;
-	}
+	//printf("0 : %s\n", param->pars->map[0]);
+	
 	// while (param->map[i])
 	// {
 	// 	j = 0;

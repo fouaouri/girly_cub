@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/03 14:39:49 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:35:37 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ void	parsing(char *file, int count)
 		l++;
 	}
 	second_parsing(strct);
+	i = 0;
+	while (strct->map[i])
+	{
+		printf ("%s", strct->map[i]);
+		i++;
+	}
 }
 
 int	parce_file_name(char *name_file)

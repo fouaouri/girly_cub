@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   second_pasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/03 14:35:16 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:31:44 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,13 @@ void	store_map(struct s_mystruct *strct, int i)
 	if (strct->content[i] == NULL)
 		exit (write (1, "Error\nthere is no map\n", 22));
 	strct->map = malloc(sizeof(char *) * (l + 1));
-	while (j < l - 1)
+	while (j < l)
 	{
 		strct->map[j] = strct->content[i];
 		i++;
 		j++;
 	}
 	strct->map[j] = NULL;
-	i = 0;
-	while (strct->map[i])
-		printf("map : %s\n", strct->map[i++]);
 	invalide_wall(strct);
 	invalide_char(strct);
 	num_of_player(strct);
@@ -90,8 +87,7 @@ void	second_parsing(struct s_mystruct *strct)
 	i = 0;
 	j = 0;
 	l = 0;
-	printf ("===>%d\n", strct->to_allocate);
-	strct->content = malloc(sizeof(char *) * strct->to_allocate +1);
+	strct->content = malloc(sizeof(char *) * strct->to_allocate + 1);
 	while (j < strct->count)
 	{
 		i = 0;
@@ -112,7 +108,6 @@ void	second_parsing(struct s_mystruct *strct)
 		}
 		j++;
 	}
-	
 	strct->content[l] = NULL;
 	store_clrs_txtrs(strct);
 }
