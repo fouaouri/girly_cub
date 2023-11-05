@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/05 14:06:12 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/05 15:56:25 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_ligne(char *strct)
 	return (0);
 }
 
-void	parsing(char *file, int count, struct s_mystruct	*strct)
+void	parsing(char *file, int count, struct s_mystruct *strct)
 {
 	int					fd1;
 	int					i;
@@ -67,8 +67,6 @@ void	parsing(char *file, int count, struct s_mystruct	*strct)
 		l++;
 	}
 	second_parsing(strct);
-	
-	
 }
 
 int	parce_file_name(char *name_file)

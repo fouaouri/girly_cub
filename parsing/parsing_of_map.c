@@ -26,7 +26,7 @@ void	square_map(struct s_mystruct *strct)
 			i++;
 	}
 	i = 0;
-	strct->square_map = malloc(sizeof(char *) * (strct->count_map + 1));
+	strct->square_map = malloc(sizeof(char *) * (strct->count_map + 2));
 	while (strct->map[i])
 	{
 		j = 0;
@@ -48,7 +48,16 @@ void	square_map(struct s_mystruct *strct)
 		}
 		i++;
 	}
-	strct->square_map[i] = NULL;
+	j = 0;
+	strct->square_map[i] = malloc(sizeof(char) * (len + 2));
+	while (j < len)
+	{
+		strct->square_map[i][j] = ' ';
+		j++;
+	}
+	strct->square_map[i][j] = '\n';
+	strct->square_map[i][j + 1] = '\0';
+	strct->square_map[i  + 1] = NULL;
 }
 
 
@@ -61,19 +70,21 @@ void	invalide_char(struct s_mystruct *strct)
 	j = strct->count_map;
 	j--;
 	square_map(strct);
-	while (j > 1)
+	for (int a = 0; strct->square_map[a]; a++)
+		printf ("%d %s", a, strct->square_map[a]);
+	printf ("j :%d\n", j);
+	while (j > 0)
 	{
 		i = 0;
-		while (strct->square_map[j][i] && strct->square_map[j][i] == ' ')
+		while (strct->square_map[j][i] == ' ')
 			i++;
-		if (strct->square_map[j][i] != '\n')
+		if (strct->square_map[j][i] && strct->square_map[j][i] != '\n')
 		{
-			j--;
 			len = ft_strlen(strct->square_map[j]);
 			len -= 2;
+			printf ("%s", strct->square_map[j]);
 			// while (strct->square_map[j][len] == ' ')
 			// 	len--;
-			printf ("i = %d, len = %d\n", i, len);
 			while (i < len)
 			{
 				if (strct->square_map[j][i] == ' ' && (strct->square_map[j - 1][i] == '0'
@@ -83,7 +94,9 @@ void	invalide_char(struct s_mystruct *strct)
 					|| strct->square_map[j - 1][i] == 'W' || strct->square_map[j + 1][i] == 'W'
 					|| strct->square_map[j + 1][i] == 'S' || strct->square_map[j - 1][i] == 'S'))
 					exit (write (1, "Error\nThe map must be closed16 by walls\n", 39));
-				else if (strct->square_map[j][i] == ' ' && (strct->square_map[j][i - 1] == '0' || strct->square_map[j][i + 1] == '0'
+				else if (strct->square_map[j][i] == ' ' 
+					&& (strct->square_map[j][i - 1] == '0'
+					|| strct->square_map[j][i + 1] == '0'
 					|| strct->square_map[j][i + 1] == 'N' || strct->square_map[j][i - 1] == 'N'
 					|| strct->square_map[j][i - 1] == 'W' || strct->square_map[j][i + 1] == 'W'
 					|| strct->square_map[j][i - 1] == 'E' || strct->square_map[j][i + 1] == 'E'
@@ -131,7 +144,7 @@ void	invalide_wall_(struct s_mystruct *strct)
 
 int	invalide_wall(struct s_mystruct *strct)
 {
-		int	i;
+	int	i;
 	int	j;
 
 	i = 0;
@@ -141,7 +154,7 @@ int	invalide_wall(struct s_mystruct *strct)
 			i++;
 	while (strct->map[0][i] != '\n')
 	{
-		if (strct->map[0][i] != '1')
+		if (strct->map[0][i] != '1' && strct->map[0][i] != ' ')
 			exit(write (1, "rerrrrrr\n", 9));
 		i++;
 	}
@@ -184,7 +197,6 @@ int	invalide_wall(struct s_mystruct *strct)
 		j++;
 	}
 	j = strct->count_map;
-	
 	j--;
 	while (j > 0)
 	{

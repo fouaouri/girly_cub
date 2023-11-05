@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/05 14:02:19 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/05 16:34:46 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,12 @@ void	second_parsing(struct s_mystruct *strct)
 	i = 0;
 	j = 0;
 	l = 0;
-	strct->content = malloc(sizeof(char *) * strct->to_allocate + 1);
+	strct->content = malloc(sizeof(char *) * (strct->to_allocate + 1));
 	while (j < strct->count)
 	{
 		i = 0;
-		while (strct->file[j][i] != '\0' && strct->file[j][i])
+		while (strct->file[j][i])
 		{
-			
 			while (strct->file[j][i] != '\0' && strct->file[j][i] == ' ')
 				i++;
 			if (l < 7 && strct->file[j][i] == '\n')
@@ -101,7 +100,7 @@ void	second_parsing(struct s_mystruct *strct)
 			else
 			{
 				strct->content[l] = strct->file[j];
-				l++;	
+				l++;
 				break ;
 			}
 			i++;
