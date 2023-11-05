@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/04 20:35:37 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/05 14:06:12 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,16 @@ int	check_ligne(char *strct)
 	return (0);
 }
 
-void	parsing(char *file, int count)
+void	parsing(char *file, int count, struct s_mystruct	*strct)
 {
 	int					fd1;
 	int					i;
 	int					j;
 	int					l;
 	char				*str;
-	struct s_mystruct	*strct;
 
 	i = 0;
 	l = 0;
-	strct = malloc(sizeof(struct s_mystruct));
 	strct->count = count;
 	strct->to_allocate = 0;
 	fd1 = open(file, O_RDONLY);
@@ -69,12 +67,8 @@ void	parsing(char *file, int count)
 		l++;
 	}
 	second_parsing(strct);
-	i = 0;
-	while (strct->map[i])
-	{
-		printf ("%s", strct->map[i]);
-		i++;
-	}
+	
+	
 }
 
 int	parce_file_name(char *name_file)
@@ -104,7 +98,7 @@ int	parce_file_name(char *name_file)
 	return (1);
 }
 
-void	pars_part(int ac, char **av)
+void	pars_part(int ac, char **av,t_mystruct *parms )
 {
 	int					i;
 	int					fd0;
@@ -127,5 +121,5 @@ void	pars_part(int ac, char **av)
 		free (str);
 	}
 	close (fd0);
-	parsing(av[1], i);
+	parsing(av[1], i, parms);
 }

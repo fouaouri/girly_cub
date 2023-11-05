@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/04 19:23:37 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/05 14:06:33 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void	invalide_char(struct s_mystruct *strct);
 void    num_of_player(struct s_mystruct *strct);
 void	parsing_of_clrs_txtrs(struct s_mystruct *strct);
 void    second_parsing(struct s_mystruct *strct);
-void	pars_part(int ac, char **av);
+void	pars_part(int ac, char **av, struct s_mystruct *strct);
 
 
 #endif

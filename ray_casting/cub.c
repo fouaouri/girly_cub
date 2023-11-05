@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:06 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/04 20:34:18 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/05 15:12:10 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,18 +142,14 @@ void	pose_player(t_builders *param)
 int main(int ac, char **av)
 {
 	int i = 0;
-
-	pars_part(ac, av);
-	
-    t_builders *param;
+	t_builders *param;
 	t_coordinates	coor;
 	t_mystruct pars;
 	param = malloc(sizeof(t_builders));
-	while(param->pars->map[i])
-	{
-		printf ("%s", param->pars->map[i]);
-		i++;
-	}
+
+	pars_part(ac, av, &pars);
+	// printf("ffff\n");
+
 	param->coors = &coor;
 	param->pars = &pars;
 	param->moves = 0;
@@ -165,44 +161,51 @@ int main(int ac, char **av)
 	param->image_north = NULL;
 	param->up_down= -1;
 	param->view = 0;
-    // get_dementions(av[1], param);
-	// param->map = get_map(av[1], param);
+    get_dementions(av[1], param);
+	param->map = get_map(av[1], param);
+
+	while(param->pars->map[i])
+	{
+		printf ("%s", param->pars->map[i]);
+		i++;
+	}		
 	
 	int j = 0;
-	//printf("0 : %s\n", param->pars->map[0]);
+	i = 0;
+	printf("0 : %s\n", param->pars->map[0]);
 	
-	// while (param->map[i])
-	// {
-	// 	j = 0;
-	// 	while(param->map[i][j])
-	// 	{
-	// 		if(param->map[i][j] == 'P')
-	// 		{
-	// 			param->coors->p_x = j + 0.5;
-	// 			param->coors->p_y = i + 0.5;
-	// 		}
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
+	while (param->map[i])
+	{
+		j = 0;
+		while(param->map[i][j])
+		{
+			if(param->map[i][j] == 'P')
+			{
+				param->coors->p_x = j + 0.5;
+				param->coors->p_y = i + 0.5;
+			}
+			j++;
+		}
+		i++;
+	}
 	
-	// int	h;
-	// int	w;
+	int	h;
+	int	w;
 
-	// param->mlx = mlx_init();
-	// param->mlx_win = mlx_new_window(param->mlx, WIN_WIDTH, WIN_HEIGHT, "CHAMA");
-	// param->image_north =mlx_xpm_file_to_image(param->mlx,"ray_casting/n.xpm",&h,&w);
-	// param->image_s =mlx_xpm_file_to_image(param->mlx,"ray_casting/s.xpm",&h,&w);
-	// param->image_w =mlx_xpm_file_to_image(param->mlx,"ray_casting/w.xpm",&h,&w);
-	// param->image_e =mlx_xpm_file_to_image(param->mlx,"ray_casting/e.xpm",&h,&w);
-	// int	h1;
-	// int	w2;
-	// param->data_north = (unsigned int * )mlx_get_data_addr(param->image_north,&h1,&param->coors->size_line_north,&w2);
-	// param->data_s= (unsigned int * )mlx_get_data_addr(param->image_s,&h1,&param->coors->size_line_s,&w2);
-	// param->data_w = (unsigned int * )mlx_get_data_addr(param->image_w,&h1,&param->coors->size_line_w,&w2);
-	// param->data_e = (unsigned int * )mlx_get_data_addr(param->image_e,&h1,&param->coors->size_line_e,&w2);
-	// mlx_hook(param->mlx_win, 2, 1L<<0, hooking, param);
-	// mlx_hook(param->mlx_win, 3, 1L<<1, realising, param);
-	// mlx_loop_hook(param->mlx, key_hook, param);
-    // mlx_loop(param->mlx);
+	param->mlx = mlx_init();
+	param->mlx_win = mlx_new_window(param->mlx, WIN_WIDTH, WIN_HEIGHT, "CHAMA");
+	param->image_north =mlx_xpm_file_to_image(param->mlx,"ray_casting/n.xpm",&h,&w);
+	param->image_s =mlx_xpm_file_to_image(param->mlx,"ray_casting/s.xpm",&h,&w);
+	param->image_w =mlx_xpm_file_to_image(param->mlx,"ray_casting/w.xpm",&h,&w);
+	param->image_e =mlx_xpm_file_to_image(param->mlx,"ray_casting/e.xpm",&h,&w);
+	int	h1;
+	int	w2;
+	param->data_north = (unsigned int * )mlx_get_data_addr(param->image_north,&h1,&param->coors->size_line_north,&w2);
+	param->data_s= (unsigned int * )mlx_get_data_addr(param->image_s,&h1,&param->coors->size_line_s,&w2);
+	param->data_w = (unsigned int * )mlx_get_data_addr(param->image_w,&h1,&param->coors->size_line_w,&w2);
+	param->data_e = (unsigned int * )mlx_get_data_addr(param->image_e,&h1,&param->coors->size_line_e,&w2);
+	mlx_hook(param->mlx_win, 2, 1L<<0, hooking, param);
+	mlx_hook(param->mlx_win, 3, 1L<<1, realising, param);
+	mlx_loop_hook(param->mlx, key_hook, param);
+    mlx_loop(param->mlx);
 }

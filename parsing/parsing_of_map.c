@@ -71,8 +71,9 @@ void	invalide_char(struct s_mystruct *strct)
 			j--;
 			len = ft_strlen(strct->square_map[j]);
 			len -= 2;
-			while (strct->square_map[j][len] == ' ')
-				len--;
+			// while (strct->square_map[j][len] == ' ')
+			// 	len--;
+			printf ("i = %d, len = %d\n", i, len);
 			while (i < len)
 			{
 				if (strct->square_map[j][i] == ' ' && (strct->square_map[j - 1][i] == '0'
