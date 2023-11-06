@@ -60,6 +60,34 @@ void	square_map(struct s_mystruct *strct)
 	strct->square_map[i  + 1] = NULL;
 }
 
+void    rectang_map(struct s_mystruct *strct)
+{
+    int    i;
+    int    j;
+
+    i = 0;
+    j = 0;
+    strct->rectang_map = malloc(sizeof(char *) * (strct->count_map + 2));
+    strct->max_x = ft_strlen(strct->square_map[0]) - 2;
+    while (strct->square_map[i])
+    {
+        strct->rectang_map[i] = strct->square_map[i];
+        i++;
+    }
+    strct->rectang_map[i] = NULL;
+    i = 0;
+    while (strct->rectang_map[i])
+    {
+        j = 0;
+        while (strct->rectang_map[i][j])
+        {
+            if (strct->rectang_map[i][j] == ' ' || strct->rectang_map[i][j] == '\n')
+                strct->rectang_map[i][j] = '1';
+            j++;
+        }
+        i++;
+    }
+}
 
 void	invalide_char(struct s_mystruct *strct)
 {
@@ -70,9 +98,9 @@ void	invalide_char(struct s_mystruct *strct)
 	j = strct->count_map;
 	j--;
 	square_map(strct);
-	for (int a = 0; strct->square_map[a]; a++)
-		printf ("%d %s", a, strct->square_map[a]);
-	printf ("j :%d\n", j);
+	// for (int a = 0; strct->square_map[a]; a++)
+	// 	printf ("%d %s", a, strct->square_map[a]);
+	// printf ("j :%d\n", j);
 	while (j > 0)
 	{
 		i = 0;
@@ -82,7 +110,7 @@ void	invalide_char(struct s_mystruct *strct)
 		{
 			len = ft_strlen(strct->square_map[j]);
 			len -= 2;
-			printf ("%s", strct->square_map[j]);
+			// printf ("%s", strct->square_map[j]);
 			// while (strct->square_map[j][len] == ' ')
 			// 	len--;
 			while (i < len)

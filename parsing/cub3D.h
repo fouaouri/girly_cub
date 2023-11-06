@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 09:16:36 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/04 19:11:42 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:11:34 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ struct s_mystruct{
 	int		to_allocate;
 	int		len;
 	int		count_map;
+
 };
 
 int		ft_strlen(char *str);

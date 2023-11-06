@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   second_pasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/05 16:34:46 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:21:11 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,12 @@ void	store_map(struct s_mystruct *strct, int i)
 		i++;
 		j++;
 	}
-	strct->map[j] = NULL;
+	strct->map[j] = NULL;	
+	parsing_of_clrs_txtrs(strct);
 	invalide_wall(strct);
 	invalide_char(strct);
 	num_of_player(strct);
-	parsing_of_clrs_txtrs(strct);
+
 }
 
 void	store_clrs_txtrs(struct s_mystruct *strct)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/05 14:06:33 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:04:10 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_coordinates
 typedef struct s_mystruct{
 	char	**map;
 	char	**square_map;
+	char	**rectang_map;
 	char	**clrs_txtrs;
 	char	**file;
 	char	**content;
@@ -103,6 +104,7 @@ typedef struct s_mystruct{
 	int		to_allocate;
 	int		len;
 	int		count_map;
+	int		max_x;
 }t_mystruct;
 
 typedef struct s_builders
@@ -158,7 +160,6 @@ void    draw_rays(t_builders *param);
 void	draw_mini_map(t_builders *param);
 int		realising(int key, t_builders *param);
 int		hooking(int key, t_builders *param);
-// int		ft_strlen(char *str);
 void	short_ligne(char **str, int len);
 char	*ft_strjoin_(char *s1, char *s2);
 int		invalide_wall(struct s_mystruct *strct);
@@ -167,6 +168,6 @@ void    num_of_player(struct s_mystruct *strct);
 void	parsing_of_clrs_txtrs(struct s_mystruct *strct);
 void    second_parsing(struct s_mystruct *strct);
 void	pars_part(int ac, char **av, struct s_mystruct *strct);
-
+void	rectang_map(t_mystruct *strct);
 
 #endif

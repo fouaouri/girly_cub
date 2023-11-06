@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:07:52 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/02 19:25:37 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:35:52 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@ void    hori_up(t_builders  *param)
 	}
 	param->coors->c = (param->coors->p_y - (int)param->coors->p_y) / cos(param->coors->f);
     param->coors->point_y = (int)param->coors->p_y;
-	if(param->coors->point_y > 14)
-		param->coors->point_y = 14;
-	if(param->coors->point_x > 38)
-		param->coors->point_x = 38;
+	if(param->coors->point_y > param->pars->count_map - 1)
+		param->coors->point_y = param->pars->count_map - 1;
+	if(param->coors->point_x > param->pars->max_x)
+		param->coors->point_x = param->pars->max_x;
 	if(param->coors->point_y < 0)
 		param->coors->point_y = 0;
 	if(param->coors->point_x < 0)
 		param->coors->point_x = 0;
-	while(param->map[(int)param->coors->point_y - 1][(int) param->coors->point_x] != '1')
+	
+	while(param->pars->rectang_map[(int)param->coors->point_y - 1][(int) param->coors->point_x] != '1')
 	{
 		param->coors->c += 1 / cos(param->coors->f);
 		if (ft_right_left(param->coors->t) == -1)
@@ -42,10 +43,10 @@ void    hori_up(t_builders  *param)
 		else if (ft_right_left(param->coors->t) == +1)
 			param->coors->point_x += tan(param->coors->f) * 1;
 		param->coors->point_y -= 1;
-		if(param->coors->point_y > 14)
-			param->coors->point_y = 14;
-		if(param->coors->point_x > 38)
-			param->coors->point_x = 38;
+		if(param->coors->point_y > param->pars->count_map - 1)
+			param->coors->point_y = param->pars->count_map - 1;
+		if(param->coors->point_x > param->pars->max_x)
+			param->coors->point_x = param->pars->max_x;
 		if(param->coors->point_y < 0)
 			param->coors->point_y = 0;
 		if(param->coors->point_x < 0)
@@ -67,15 +68,15 @@ void    hori_down(t_builders  *param)
 						}
 						param->coors->c = (((int)param->coors->p_y + 1) - param->coors->p_y) / cos(param->coors->f);
 						param->coors->point_y = (int)param->coors->p_y;
-						if(param->coors->point_y > 14)
-							param->coors->point_y = 14;
-						if(param->coors->point_x > 38)
-							param->coors->point_x = 38;
+						if(param->coors->point_y > param->pars->count_map - 1)
+							param->coors->point_y = param->pars->count_map - 1;
+						if(param->coors->point_x > param->pars->max_x)
+							param->coors->point_x = param->pars->max_x;
 						if(param->coors->point_y < 0)
 							param->coors->point_y = 0;
 						if(param->coors->point_x < 0)
 							param->coors->point_x = 0;
-						while(param->map[(int)param->coors->point_y + 1][(int) param->coors->point_x] != '1')
+						while(param->pars->rectang_map[(int)param->coors->point_y + 1][(int) param->coors->point_x] != '1')
 						{
 							param->coors->c += 1 / cos(param->coors->f);
 							if (ft_right_left(param->coors->t) == -1)
@@ -83,10 +84,10 @@ void    hori_down(t_builders  *param)
 							else if (ft_right_left(param->coors->t) == +1)
 								param->coors->point_x += tan(param->coors->f) * 1;
 							param->coors->point_y += 1;
-							if(param->coors->point_y > 14)
-								param->coors->point_y = 14;
-							if(param->coors->point_x > 38)
-								param->coors->point_x = 38;
+							if(param->coors->point_y > param->pars->count_map - 1)
+								param->coors->point_y = param->pars->count_map - 1;
+							if(param->coors->point_x > param->pars->max_x)
+								param->coors->point_x = param->pars->max_x;
 							if(param->coors->point_y < 0)
 								param->coors->point_y = 0;
 							if(param->coors->point_x < 0)
@@ -116,27 +117,27 @@ void    vertical_down(t_builders *param)
 							param->coors->point_y = tan(param->coors->g) * (param->coors->p_x - (int)param->coors->p_x) + param->coors->p_y;
 							param->coors->point_x =(int)param->coors->p_x;
 						}
-						if(param->coors->point_y > 14)
-							param->coors->point_y = 14;
-						if(param->coors->point_x > 38)
-							param->coors->point_x = 38;
+						if(param->coors->point_y > param->pars->count_map - 1)
+							param->coors->point_y = param->pars->count_map - 1;
+						if(param->coors->point_x > param->pars->max_x)
+							param->coors->point_x = param->pars->max_x;
 						if(param->coors->point_y < 0)
 							param->coors->point_y = 0;
 						if(param->coors->point_x < 0)
 							param->coors->point_x = 0;
 						if (param->coors->flag == -1)
 						{
-							while(param->map[(int)param->coors->point_y][(int)param->coors->point_x - 1] != '1')
+							while(param->pars->rectang_map[(int)param->coors->point_y][(int)param->coors->point_x - 1] != '1')
 							{
 								if (param->coors->flag != -1)
 									break ;
 								param->coors->c1 += 1 / cos(param->coors->g);
 								param->coors->point_x -= 1;
 								param->coors->point_y += tan(param->coors->g) * 1;
-								if(param->coors->point_y > 14)
-									param->coors->point_y = 14;
-								if(param->coors->point_x > 38)
-									param->coors->point_x = 38;
+								if(param->coors->point_y > param->pars->count_map - 1)
+									param->coors->point_y = param->pars->count_map - 1;
+								if(param->coors->point_x > param->pars->max_x)
+									param->coors->point_x = param->pars->max_x;
 								if(param->coors->point_y < 0)
 									param->coors->point_y = 0;
 								if(param->coors->point_x < 0)
@@ -145,17 +146,17 @@ void    vertical_down(t_builders *param)
 						}
 						else if (param->coors->flag == 1)
 						{
-							while(param->map[(int)param->coors->point_y][(int) param->coors->point_x] != '1')
+							while(param->pars->rectang_map[(int)param->coors->point_y][(int) param->coors->point_x] != '1')
 							{
 								if (param->coors->flag != 1)
 									break ;
 								param->coors->c1 += 1 / cos(param->coors->g);
 								param->coors->point_x += 1;
 								param->coors->point_y += tan(param->coors->g) * 1;
-								if(param->coors->point_y > 14)
-									param->coors->point_y = 14;
-								if(param->coors->point_x > 38)
-									param->coors->point_x = 38;
+								if(param->coors->point_y > param->pars->count_map - 1)
+									param->coors->point_y = param->pars->count_map - 1;
+								if(param->coors->point_x > param->pars->max_x)
+									param->coors->point_x = param->pars->max_x;
 								if(param->coors->point_y < 0)
 									param->coors->point_y = 0;
 								if(param->coors->point_x < 0)
@@ -184,27 +185,27 @@ void    vertical_up(t_builders *param)
 							param->coors->point_y = param->coors->p_y - (tan(param->coors->g) * ((int)param->coors->p_x + 1  -  param->coors->p_x));
 						}
 						param->coors->point_x = (int)param->coors->p_x;
-						if(param->coors->point_y > 14)
-							param->coors->point_y = 14;
-						if(param->coors->point_x > 38)
-							param->coors->point_x = 38;
+						if(param->coors->point_y > param->pars->count_map - 1)
+							param->coors->point_y = param->pars->count_map - 1;
+						if(param->coors->point_x > param->pars->max_x)
+							param->coors->point_x = param->pars->max_x;
 						if(param->coors->point_y < 0)
 							param->coors->point_y = 0;
 						if(param->coors->point_x < 0)
 							param->coors->point_x = 0;
 						if (param->coors->flag == -1)
 						{
-							while(param->map[(int)param->coors->point_y][(int) param->coors->point_x - 1] != '1')
+							while(param->pars->rectang_map[(int)param->coors->point_y][(int) param->coors->point_x - 1] != '1')
 							{
 								if (param->coors->flag != -1)
 									break ;
 								param->coors->c1 += 1 / cos(param->coors->g);
 								param->coors->point_x -= 1;
 								param->coors->point_y -= tan(param->coors->g) * 1;
-								if(param->coors->point_y > 14)
-									param->coors->point_y = 14;
-								if(param->coors->point_x > 38)
-									param->coors->point_x = 38;
+								if(param->coors->point_y > param->pars->count_map - 1)
+									param->coors->point_y = param->pars->count_map - 1;
+								if(param->coors->point_x > param->pars->max_x)
+									param->coors->point_x = param->pars->max_x;
 								if(param->coors->point_y < 0)
 									param->coors->point_y = 0;
 								if(param->coors->point_x < 0)
@@ -213,17 +214,17 @@ void    vertical_up(t_builders *param)
 						}
 						else if (param->coors->flag == 1)
 						{
-							while(param->map[(int)param->coors->point_y][(int) param->coors->point_x + 1] != '1')
+							while(param->pars->rectang_map[(int)param->coors->point_y][(int) param->coors->point_x + 1] != '1')
 							{
 								if (param->coors->flag != 1)
 									break ;
 								param->coors->c1 += 1 / cos(param->coors->g);
 								param->coors->point_x += 1;
 								param->coors->point_y -= tan(param->coors->g) * 1;
-								if(param->coors->point_y > 14)
-									param->coors->point_y = 14;
-								if(param->coors->point_x > 38)
-									param->coors->point_x = 38;
+								if(param->coors->point_y > param->pars->count_map - 1)
+									param->coors->point_y = param->pars->count_map - 1;
+								if(param->coors->point_x > param->pars->max_x)
+									param->coors->point_x = param->pars->max_x;
 								if(param->coors->point_y < 0)
 									param->coors->point_y = 0;
 								if(param->coors->point_x < 0)
@@ -238,12 +239,12 @@ void	draw_mini_map(t_builders *param)
 	int j = 0;
 	int h = 0;
 	int w = 0;
-	while (param->map[i])
+	while (param->pars->rectang_map[i])
 	{
 		j = 0;
-		while(param->map[i][j])
+		while(param->pars->rectang_map[i][j])
 		{
-			if(param->map[i][j] == '1')
+			if(param->pars->rectang_map[i][j] == '1')
 			{
 				w = 1;
 				while(w < UNIT_SIZE)
@@ -257,7 +258,7 @@ void	draw_mini_map(t_builders *param)
 					w++;
 				}
 			}
-			if(param->map[i][j] == '0' || param->map[i][j] == 'P')
+			if(param->pars->rectang_map[i][j] == '0' || param->pars->rectang_map[i][j] == 'P')
 			{
 				w = 1;
 				while (w < UNIT_SIZE)

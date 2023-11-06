@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/05 15:56:25 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:07:43 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	parce_file_name(char *name_file)
 	return (1);
 }
 
-void	pars_part(int ac, char **av,t_mystruct *parms )
+void	pars_part(int ac, char **av,t_mystruct *param)
 {
 	int					i;
 	int					fd0;
@@ -119,5 +119,5 @@ void	pars_part(int ac, char **av,t_mystruct *parms )
 		free (str);
 	}
 	close (fd0);
-	parsing(av[1], i, parms);
+	parsing(av[1], i, param);
 }
