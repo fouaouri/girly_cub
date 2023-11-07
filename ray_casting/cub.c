@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:06 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 10:25:46 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:06:58 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	get_floor_ceiling(t_builders *param)
 		j = 0;
 		while (j < WIN_WIDTH)
 		{
-			data_value(param, i, j, ft_atoi(param->pars->ceiling));
+			data_value(param, i, j, param->pars->c_value);
 			j++;
 		}
 		i++;
@@ -70,7 +70,7 @@ void	get_floor_ceiling(t_builders *param)
 		j = 0;
 		while (j < WIN_WIDTH)
 		{
-			data_value(param, i, j, ft_atoi(param->pars->floor));
+			data_value(param, i, j, param->pars->f_value);
 			j++;
 		}
 		i++;

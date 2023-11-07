@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical_down.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:44:38 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 11:45:35 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:16:38 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	while_flag_2(t_builders *param)
 			param->coors->point_y = 0;
 		if (param->coors->point_x < 0)
 			param->coors->point_x = 0;
-	}	
+	}
 }
 
 void	if_flags(t_builders *param)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_value_mlx.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:24:40 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 11:50:51 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:04:57 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	get_mlx(t_builders *param)
 		param->image = mlx_new_image(param->mlx, 1200, 800);
 		param->data = (unsigned int *)mlx_get_data_addr(param->image,
 				&bits_per_pixel, &param->coors->size_line, &endian);
-		// get_floor_ceiling(param);
+		get_floor_ceiling(param);
 		pose_player(param);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 11:48:41 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:37:58 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ typedef struct s_mystruct{
 	int		ea;
 	int		f;
 	int		c;
+	int		c_value;
+	int		f_value;
 	int		to_allocate;
 	int		len;
 	int		count_map;
@@ -185,5 +187,6 @@ void	vertical_up(t_builders *param);
 void	vertical_down(t_builders *param);
 void	hori_down(t_builders *param);
 void	hori_up(t_builders *param);
+void	parsing_of_colors(struct s_mystruct *strct);
 
 #endif

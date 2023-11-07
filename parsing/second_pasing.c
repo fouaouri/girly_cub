@@ -56,6 +56,7 @@ void	store_map(struct s_mystruct *strct, int i)
 	}
 	strct->map[j] = NULL;	
 	parsing_of_clrs_txtrs(strct);
+	parsing_of_colors(strct);
 	invalide_wall(strct);
 	invalide_char(strct);
 	num_of_player(strct);
