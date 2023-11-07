@@ -60,7 +60,6 @@ void	store_map(struct s_mystruct *strct, int i)
 	invalide_wall(strct);
 	invalide_char(strct);
 	num_of_player(strct);
-
 }
 
 void	store_clrs_txtrs(struct s_mystruct *strct)

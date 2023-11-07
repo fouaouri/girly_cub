@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 22:26:51 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:56:53 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	pars_part(int ac, char **av,t_mystruct *param)
 	if (fd0 < 0)
 		exit (write (2, "Error\nfailed fd0\n", 16));
 	str = get_next_line(fd0);
+	free (str);
 	i = 0;
 	while (str != NULL)
 	{
