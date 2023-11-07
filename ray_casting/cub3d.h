@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/06 15:04:10 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:48:41 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include <limits.h>
+# include <errno.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
@@ -23,17 +24,16 @@
 # include <stdarg.h>
 # include <math.h>
 # include "../libs/libft/libft.h"
-// #include <X11/X.h>
-// #include <X11/keysym.h>
-
-#define WIN_WIDTH 1200
-#define WIN_HEIGHT 800
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 800
 # define TURN_DIREC 0
 # define MOVE -1
-# define UP 65362
-# define DOWN 65364
+# define UP 119
+# define DOWN 115
 # define LEFT 65361
 # define RIGHT 65363
+# define A_LEFT 97
+# define D_RIGHT 100
 # define ESC 65307
 # define PINK_PIXEL 0xFF69B4
 # define PINKY_PIXEL 0xFFC0CB
@@ -46,6 +46,10 @@ typedef struct s_coordinates
 {
 	double	i;
 	double	j;
+	double	b;
+	double	wall_len;
+	double	wall_len2;
+	double	w;
 	double	height;
 	double	width;
 	double	p_x;
@@ -60,26 +64,27 @@ typedef struct s_coordinates
 	int		size_line_s;
 	int		size_line_e;
 	int		size_line_w;
-	char 	direc;
+	char	direc;
 	int		offset;
 	double	di_player_projection;
 	double	proj_wall_height;
 	double	wall_height;
 	double	top_pixel;
 	double	bottom_pixel;
-	double 	point_x;
-	double 	point_x1;
-	double 	point_y;
-	double 	point_y1;
+	double	point_x;
+	double	point_x1;
+	double	point_y;
+	double	point_y1;
 	double	t;
-	double 	f;
-	double 	g;
-	double 	c;
-	double 	c1;
-	double 	r;
+	double	f;
+	double	g;
+	double	c;
+	double	c1;
+	double	r;
 	int		flag;
-	int		b;
-} t_coordinates;
+	int		a;
+	int		color;
+}t_coordinates;
 
 typedef struct s_mystruct{
 	char	**map;
@@ -134,10 +139,9 @@ typedef struct s_builders
 	int				moves;
 	void			*img;
 	char			*addr;
-	double up_down;
-	double view;
+	double			up_down;
+	double			view;
 }t_builders;
-
 
 char	*read_file(int fd, char *counter);
 char	*put_on_the_line(char *counter);
@@ -152,11 +156,11 @@ int		ft_right_left(double t);
 void	return_after_2_pi(t_builders param);
 void	data_value(t_builders *param, int y, int x, int color);
 void	return_after_2_pi1(t_builders *param);
-void    hori_up(t_builders  *param);
-void    hori_down(t_builders  *param);
-void    vertical_down(t_builders *param);
-void    vertical_up(t_builders *param);
-void    draw_rays(t_builders *param);
+void	hori_up(t_builders *param);
+void	hori_down(t_builders *param);
+void	vertical_down(t_builders *param);
+void	vertical_up(t_builders *param);
+void	draw_rays(t_builders *param);
 void	draw_mini_map(t_builders *param);
 int		realising(int key, t_builders *param);
 int		hooking(int key, t_builders *param);
@@ -164,10 +168,22 @@ void	short_ligne(char **str, int len);
 char	*ft_strjoin_(char *s1, char *s2);
 int		invalide_wall(struct s_mystruct *strct);
 void	invalide_char(struct s_mystruct *strct);
-void    num_of_player(struct s_mystruct *strct);
+void	num_of_player(struct s_mystruct *strct);
 void	parsing_of_clrs_txtrs(struct s_mystruct *strct);
-void    second_parsing(struct s_mystruct *strct);
+void	second_parsing(struct s_mystruct *strct);
 void	pars_part(int ac, char **av, struct s_mystruct *strct);
 void	rectang_map(t_mystruct *strct);
+void	get_floor_ceiling(t_builders *param);
+int		check_wall(t_builders *param, int y, int x);
+void	color_buffer(t_builders *param, double wall_len, double i, double j);
+void	put_img(t_builders *param, int wall_len, int x, int y);
+void	loop_mlx(t_builders *param);
+void	init_mlx(t_builders *param);
+void	init_player(t_builders *param);
+void	init_main(t_builders *param);
+void	vertical_up(t_builders *param);
+void	vertical_down(t_builders *param);
+void	hori_down(t_builders *param);
+void	hori_up(t_builders *param);
 
 #endif

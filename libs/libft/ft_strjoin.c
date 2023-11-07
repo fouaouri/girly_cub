@@ -3,55 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 15:44:37 by melhadou          #+#    #+#             */
-/*   Updated: 2023/11/03 12:44:46 by fouaouri         ###   ########.fr       */
+/*   Created: 2022/11/01 00:04:09 by fouaouri          #+#    #+#             */
+/*   Updated: 2022/11/05 16:29:39 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static char	*ft_cpy(char const *s1, char const *s2, char *str)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (*(s1 + i))
-	{
-		*(str + j) = *(s1 + i);
-		j++;
-		i++;
-	}
-	i = 0;
-	while (*(s2 + i))
-	{
-		*(str + j) = *(s2 + i);
-		j++;
-		i++;
-	}
-	*(str + j) = '\0';
-	return (str);
-}
+#include"libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	size_t	s1_len;
-	size_t	s2_len;
+	size_t	i;
+	size_t	j;
+	size_t	l;
+	char	*lorst;
 
-	s1_len = 0;
-	s2_len = 0;
-	str = NULL;
-	if (s1)
-		s1_len = ft_strlen(s1);
-	if (s2)
-		s2_len = ft_strlen(s2);
-	str = malloc(s1_len + s2_len + 1);
-	if (!str)
-		return (str);
-	ft_cpy(s1, s2, str);
-	return (str);
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = 0;
+	l = ft_strlen(s1) + ft_strlen(s2);
+	lorst = malloc(l + 1);
+	if (!lorst)
+		return (NULL);
+	while (s1[i])
+	{
+		lorst[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+		lorst[i++] = s2[j++];
+	lorst[i] = '\0';
+	return (lorst);
 }

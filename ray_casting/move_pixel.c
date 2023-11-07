@@ -6,18 +6,11 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 21:42:51 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/06 15:06:36 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 08:36:09 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	check_wall(t_builders *param, int y, int x)
-{
-	if (param->pars->rectang_map[y][x] != '1')
-		return (1);
-	return (0);
-}
 
 void	move_player_up(t_builders *param)
 {
@@ -41,6 +34,32 @@ void	move_player_down(t_builders *param)
 	}
 }
 
+void	move_player_right(t_builders *param)
+{
+	if (check_wall(param,
+			(int)(param->coors->p_y + 0.5 * sin(param->coors->turn_direc
+				+ (PI / 2))),
+		(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc
+			+ (PI / 2)))))
+	{
+		param->coors->p_x += 0.05 * cos(param->coors->turn_direc + (PI / 2));
+		param->coors->p_y += 0.05 * sin(param->coors->turn_direc + (PI / 2));
+	}
+}
+
+void	move_player_left(t_builders *param)
+{
+	if (check_wall(param,
+			(int)(param->coors->p_y + 0.5 * sin(param->coors->turn_direc
+				- (PI / 2))),
+		(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc
+			- (PI / 2)))))
+	{
+		param->coors->p_x += 0.05 * cos(param->coors->turn_direc - (PI / 2));
+		param->coors->p_y += 0.05 * sin(param->coors->turn_direc - (PI / 2));
+	}
+}
+
 int	key_hook(t_builders *param)
 {
 	param->coors->turn_direc += param->view;
@@ -50,6 +69,10 @@ int	key_hook(t_builders *param)
 			move_player_up(param);
 		else if (param->up_down == 1)
 			move_player_down(param);
+		else if (param->up_down == 2)
+			move_player_left(param);
+		else if (param->up_down == 3)
+			move_player_right(param);
 	}
 	get_mlx(param);
 	mlx_put_image_to_window(param->mlx, param->mlx_win, param->image, 0, 0);

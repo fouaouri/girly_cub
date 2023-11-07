@@ -3,41 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: fouaouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 22:09:11 by melhadou          #+#    #+#             */
-/*   Updated: 2022/11/20 05:59:49 by melhadou         ###   ########.fr       */
+/*   Created: 2022/10/19 22:32:51 by fouaouri          #+#    #+#             */
+/*   Updated: 2022/11/08 23:00:35 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_neg(int s)
+int	ft_atoi(const char *str)
 {
-	if (s == 1)
-		return (-1);
-	return (0);
-}
-
-int	ft_atoi(const char *nptr)
-{
-	unsigned long long	n;
-	int					i;
+	unsigned long int	result;
 	int					sign;
 
-	n = 0;
-	i = 0;
+	result = 0;
 	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-		sign = 1 - 2 * (nptr[i++] == '-');
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while ((*str == 32 || (*str >= 9 && *str <= 13)))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		n = n * 10 + (nptr[i] - '0');
-		if (n > 9223372036854775807)
-			return (is_neg(sign));
-		i++;
+		if (*str == '-')
+			sign = sign * (-1);
+		str++;
 	}
-	return (n * sign);
+	while (ft_isdigit(*str))
+	{
+		result = (result * 10) + (*str - '0');
+		if (result > LLONG_MAX && sign == -1)
+			return (0);
+		else if (result > LLONG_MAX && sign == 1)
+			return (-1);
+		str++;
+	}
+	return (result * sign);
 }

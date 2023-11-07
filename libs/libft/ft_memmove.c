@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melhadou <melhadou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: fouaouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 18:00:13 by melhadou          #+#    #+#             */
-/*   Updated: 2022/11/19 18:57:31 by melhadou         ###   ########.fr       */
+/*   Created: 2022/10/19 21:51:48 by fouaouri          #+#    #+#             */
+/*   Updated: 2022/11/05 16:30:53 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*t_src;
-	unsigned char	*t_dst;
+	unsigned char	*d;
+	unsigned char	*s;
+	int				i;
 
-	t_src = (unsigned char *) src;
-	t_dst = (unsigned char *) dst;
-	if (t_dst == 0 && t_src == 0)
-		return (t_dst);
-	if (t_src > t_dst)
-		ft_memcpy(t_dst, t_src, len);
-	else
+	i = 0;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	if (len == 0)
+		return (dst);
+	if (dst > src)
 	{
-		while (0 < len)
+		i = len - 1 ;
+		while (i >= 0)
 		{
-			t_dst[len - 1] = t_src[len - 1];
-			len--;
+			d[i] = s[i];
+			i--;
 		}
+		return ((void *) d);
 	}
-	return (t_dst);
+	else
+		return (ft_memcpy(dst, src, len));
 }
