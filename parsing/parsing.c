@@ -6,11 +6,40 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 22:56:53 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:51:26 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ray_casting/cub3d.h"
+
+void	rectang_map(struct s_mystruct *strct)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	strct->rectang_map = malloc(sizeof(char *) * (strct->count_map + 2));
+	strct->max_x = ft_strlen(strct->square_map[0]) - 2;
+	while (strct->square_map[i])
+	{
+		strct->rectang_map[i] = strct->square_map[i];
+		i++;
+	}
+	strct->rectang_map[i] = NULL;
+	i = -1;
+	while (strct->rectang_map[++i])
+	{
+		j = 0;
+		while (strct->rectang_map[i][j])
+		{
+			if (strct->rectang_map[i][j] == ' '
+				|| strct->rectang_map[i][j] == '\n')
+				strct->rectang_map[i][j] = '1';
+			j++;
+		}
+	}
+}
 
 int	check_ligne(char *strct)
 {

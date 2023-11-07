@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 22:18:53 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:51:49 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_mystruct{
 	int		f_value;
 	int		to_allocate;
 	int		len;
+	int		l;
 	int		count_map;
 	int		max_x;
 }t_mystruct;
@@ -188,6 +189,7 @@ void	vertical_down(t_builders *param);
 void	hori_down(t_builders *param);
 void	hori_up(t_builders *param);
 char	**ft_free(char **spliter);
+void	rectang_map(struct s_mystruct *strct);
 void	parsing_of_colors(struct s_mystruct *strct);
 
 #endif

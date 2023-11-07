@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_of_map.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/07 23:46:36 by nben-ais          #+#    #+#             */
+/*   Updated: 2023/11/07 23:50:55 by nben-ais         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ray_casting/cub3d.h"
 
-int count_map(char **map)
+int	count_map(char **map)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (map[i])
-        i++;
-    return (i);
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
 
 void	square_map(struct s_mystruct *strct)
@@ -57,36 +69,7 @@ void	square_map(struct s_mystruct *strct)
 	}
 	strct->square_map[i][j] = '\n';
 	strct->square_map[i][j + 1] = '\0';
-	strct->square_map[i  + 1] = NULL;
-}
-
-void    rectang_map(struct s_mystruct *strct)
-{
-    int    i;
-    int    j;
-
-    i = 0;
-    j = 0;
-    strct->rectang_map = malloc(sizeof(char *) * (strct->count_map + 2));
-    strct->max_x = ft_strlen(strct->square_map[0]) - 2;
-    while (strct->square_map[i])
-    {
-        strct->rectang_map[i] = strct->square_map[i];
-        i++;
-    }
-    strct->rectang_map[i] = NULL;
-    i = 0;
-    while (strct->rectang_map[i])
-    {
-        j = 0;
-        while (strct->rectang_map[i][j])
-        {
-            if (strct->rectang_map[i][j] == ' ' || strct->rectang_map[i][j] == '\n')
-                strct->rectang_map[i][j] = '1';
-            j++;
-        }
-        i++;
-    }
+	strct->square_map[i + 1] = NULL;
 }
 
 void	invalide_char(struct s_mystruct *strct)
@@ -98,9 +81,6 @@ void	invalide_char(struct s_mystruct *strct)
 	j = strct->count_map;
 	j--;
 	square_map(strct);
-	// for (int a = 0; strct->square_map[a]; a++)
-	// 	printf ("%d %s", a, strct->square_map[a]);
-	// printf ("j :%d\n", j);
 	while (j > 0)
 	{
 		i = 0;
@@ -110,9 +90,6 @@ void	invalide_char(struct s_mystruct *strct)
 		{
 			len = ft_strlen(strct->square_map[j]);
 			len -= 2;
-			// printf ("%s", strct->square_map[j]);
-			// while (strct->square_map[j][len] == ' ')
-			// 	len--;
 			while (i < len)
 			{
 				if (strct->square_map[j][i] == ' ' && (strct->square_map[j - 1][i] == '0'
@@ -133,7 +110,7 @@ void	invalide_char(struct s_mystruct *strct)
 				else if (strct->square_map[j][i] != '0' && strct->square_map[j][i] != '1' && strct->square_map[j][i] != 'N'
 					&& strct->square_map[j][i] != 'S' && strct->square_map[j][i] != 'E' && strct->square_map[j][i] != 'W'
 					&& strct->square_map[j][i] != ' ')
-						exit (write (1, "Error\ninvalide character\n", 25));
+					exit (write (1, "Error\ninvalide character\n", 25));
 				else
 					i++;
 			}
@@ -141,7 +118,6 @@ void	invalide_char(struct s_mystruct *strct)
 		j--;
 	}
 }
-
 
 void	invalide_wall_(struct s_mystruct *strct)
 {
@@ -169,7 +145,6 @@ void	invalide_wall_(struct s_mystruct *strct)
 	}
 }
 
-
 int	invalide_wall(struct s_mystruct *strct)
 {
 	int	i;
@@ -179,7 +154,7 @@ int	invalide_wall(struct s_mystruct *strct)
 	j = 0;
 	strct->count_map = count_map(strct->map);
 	while (strct->map[0][i] && strct->map[0][i] == ' ')
-			i++;
+		i++;
 	while (strct->map[0][i] != '\n')
 	{
 		if (strct->map[0][i] != '1' && strct->map[0][i] != ' ')

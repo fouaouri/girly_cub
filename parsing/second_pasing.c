@@ -1,19 +1,18 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   second_pasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/05 17:21:11 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:45:56 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ray_casting/cub3d.h"
 
-void    num_of_player(struct s_mystruct *strct)
+void	num_of_player(struct s_mystruct *strct)
 {
 	int	i;
 	int	j;
@@ -54,7 +53,7 @@ void	store_map(struct s_mystruct *strct, int i)
 		i++;
 		j++;
 	}
-	strct->map[j] = NULL;	
+	strct->map[j] = NULL;
 	parsing_of_clrs_txtrs(strct);
 	parsing_of_colors(strct);
 	invalide_wall(strct);
@@ -84,31 +83,27 @@ void	second_parsing(struct s_mystruct *strct)
 {
 	int	i;
 	int	j;
-	int	l;
 
-	i = 0;
-	j = 0;
-	l = 0;
+	j = -1;
+	strct->l = 0;
 	strct->content = malloc(sizeof(char *) * (strct->to_allocate + 1));
-	while (j < strct->count)
+	while (++j < strct->count)
 	{
-		i = 0;
-		while (strct->file[j][i])
+		i = -1;
+		while (strct->file[j][++i])
 		{
-			while (strct->file[j][i] != '\0' && strct->file[j][i] == ' ')
+			while (strct->file[j][i] == ' ')
 				i++;
-			if (l < 7 && strct->file[j][i] == '\n')
+			if (strct->l < 7 && strct->file[j][i] == '\n')
 				break ;
 			else
 			{
-				strct->content[l] = strct->file[j];
-				l++;
+				strct->content[strct->l] = strct->file[j];
+				strct->l++;
 				break ;
 			}
-			i++;
 		}
-		j++;
 	}
-	strct->content[l] = NULL;
+	strct->content[strct->l] = NULL;
 	store_clrs_txtrs(strct);
 }

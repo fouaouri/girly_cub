@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:22:44 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 22:30:23 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:35:47 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_len(char **str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str && str[i])
 		i++;
@@ -29,25 +29,20 @@ int	*ft_myatoi(char **str)
 	int	r;
 	int	*num;
 
-	i = 0;
-	r = 0;
 	num = malloc(sizeof(int) * 3);
-	while (str && str[i])
+	i = -1;
+	while (str && str[++i])
 	{
-		j = 0;
+		j = -1;
 		r = 0;
-		while (str[i][j])
+		while (str[i][++j])
 		{
 			if (str[i][j] >= '0' && str[i][j] <= '9')
-			{
 				r = r * 10 + str[i][j] - 48;
-				j++;
-			}
 			else
 				exit (write (1, "Error in colors1\n", 17));
 		}
 		num[i] = r;
-		i++;
 		if (r < 0 || r > 255)
 			exit (write (1, "Error in colors2\n", 17));
 	}
@@ -72,11 +67,11 @@ void	parsing_of_colors(struct s_mystruct *strct)
 	f = ft_myatoi(floor);
 	strct->c_value = 0;
 	strct->f_value = 0;
-	strct->c_value += c[0]<< 16;
-	strct->c_value += c[1]<< 8;
+	strct->c_value += c[0] << 16;
+	strct->c_value += c[1] << 8;
 	strct->c_value += c[2];
-	strct->f_value += f[0]<< 16;
-	strct->f_value += f[1]<< 8;
+	strct->f_value += f[0] << 16;
+	strct->f_value += f[1] << 8;
 	strct->f_value += f[2];
 	free (c);
 	free (f);
