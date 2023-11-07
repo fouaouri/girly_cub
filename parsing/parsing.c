@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/06 12:07:43 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:26:51 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int	parce_file_name(char *name_file)
 	int	i;
 
 	i = 0;
-	// if (ft_strlen(name_file) < 4)
-	// 	return (1);
+	if (ft_strlen(name_file) < 4)
+		return (1);
 	while (name_file[i])
 		i++;
 	i--;

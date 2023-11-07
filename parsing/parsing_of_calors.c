@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:22:44 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 20:47:10 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:30:23 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	*ft_myatoi(char **str)
 		if (r < 0 || r > 255)
 			exit (write (1, "Error in colors2\n", 17));
 	}
+	ft_free (str);
 	return (num);
 }
 
@@ -77,5 +78,6 @@ void	parsing_of_colors(struct s_mystruct *strct)
 	strct->f_value += f[0]<< 16;
 	strct->f_value += f[1]<< 8;
 	strct->f_value += f[2];
-	printf ("f = %d, c = %d\n", strct->f_value, strct->c_value);
+	free (c);
+	free (f);
 }

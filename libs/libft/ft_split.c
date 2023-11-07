@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:23:09 by fouaouri          #+#    #+#             */
-/*   Updated: 2022/11/10 01:30:43 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:18:24 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*ft_str_allocation(char *s, char sep)
 	return (word);
 }
 
-static char	**ft_free(char **spliter)
+char	**ft_free(char **spliter)
 {
 	int	i;
 

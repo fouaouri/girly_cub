@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 20:37:58 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:18:53 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ void	vertical_up(t_builders *param);
 void	vertical_down(t_builders *param);
 void	hori_down(t_builders *param);
 void	hori_up(t_builders *param);
+char	**ft_free(char **spliter);
 void	parsing_of_colors(struct s_mystruct *strct);
 
 #endif
