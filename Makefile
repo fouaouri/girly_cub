@@ -1,6 +1,6 @@
 NAME = cub3d
 CC = gcc
-CFLAGS = -Ofast   -fsanitize=address -g3
+CFLAGS =  -fsanitize=address -g3
 LIBFT = libs/libft
 LIBS = $(addprefix $(LIBFT), /libft.a)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:06 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 21:06:58 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:30:58 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	pose_player(t_builders *param)
 		return_after_2_pi1(param);
 		draw_rays(param);
 		param->coors->j = 0;
-		param->coors->wall_len = 800 / (param->coors->r
+		param->coors->wall_len = WIN_HEIGHT / (param->coors->r
 				* cos(param->coors->turn_direc - param->coors->t));
 		param->coors->wall_len2 = param->coors->wall_len;
-		param->coors->i = 400 - param->coors->wall_len / 2;
+		param->coors->i = (WIN_HEIGHT / 2) - param->coors->wall_len / 2;
 		if (param->coors->wall_len > 800)
 		{
-			param->coors->j = param->coors->wall_len2 / 2 - 550;
+			param->coors->j = param->coors->wall_len2 / 2 - 400;
 			if (param->coors->j < 0)
 				param->coors->j = 0;
 			param->coors->wall_len2 = param->coors->wall_len2 / 2 + 400;
@@ -77,6 +77,31 @@ void	get_floor_ceiling(t_builders *param)
 	}
 }
 
+void	player_direction(t_builders *param)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (param->pars->rectang_map[i])
+	{
+		j = 0;
+		while (param->pars->rectang_map[i][j])
+		{
+			if (param->pars->rectang_map[i][j] == 'N')
+				param->coors->turn_direc = (3 * PI) / 2;
+			else if (param->pars->rectang_map[i][j] == 'S')
+				param->coors->turn_direc = PI / 2;
+			else if (param->pars->rectang_map[i][j] == 'E')
+				param->coors->turn_direc = 0;
+			else if (param->pars->rectang_map[i][j] == 'W')
+				param->coors->turn_direc = PI;
+			j++;
+		}
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_builders		*param;
@@ -89,6 +114,7 @@ int	main(int ac, char **av)
 	init_main(param);
 	pars_part(ac, av, &pars);
 	rectang_map(&pars);
+	player_direction(param);
 	init_player(param);
 	init_mlx(param);
 	loop_mlx(param);

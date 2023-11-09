@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:23:37 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 11:50:38 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:09:57 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	init_player(t_builders *param)
 		j = 0;
 		while (param->pars->rectang_map[i][j])
 		{
-			if (param->pars->rectang_map[i][j] == 'N')
+			if (param->pars->rectang_map[i][j] == 'N'
+				|| param->pars->rectang_map[i][j] == 'E'
+				|| param->pars->rectang_map[i][j] == 'W'
+				|| param->pars->rectang_map[i][j] == 'S')
 			{
 				param->coors->p_x = j + 0.5;
 				param->coors->p_y = i + 0.5;
@@ -66,13 +69,13 @@ void	init_mlx(t_builders *param)
 	param->mlx = mlx_init();
 	param->mlx_win = mlx_new_window(param->mlx, WIN_WIDTH, WIN_HEIGHT, "CHAMA");
 	param->image_north = mlx_xpm_file_to_image(param->mlx,
-			"ray_casting/textures/np.xpm", &h, &w);
+			param->pars->north, &h, &w);
 	param->image_s = mlx_xpm_file_to_image(param->mlx,
-			"ray_casting/textures/s.xpm", &h, &w);
+			param->pars->south, &h, &w);
 	param->image_w = mlx_xpm_file_to_image(param->mlx,
-			"ray_casting/textures/wp.xpm", &h, &w);
+			param->pars->west, &h, &w);
 	param->image_e = mlx_xpm_file_to_image(param->mlx,
-			"ray_casting/textures/w.xpm", &h, &w);
+			param->pars->east, &h, &w);
 	if (!param->image_north || !param->image_w
 		|| !param->image_s || !param->image_e)
 		perror("Error\nInvalide texture .. try again !!\n");

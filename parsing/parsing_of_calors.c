@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_calors.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:22:44 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 23:35:47 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:56:12 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	*ft_myatoi(char **str)
 	{
 		j = -1;
 		r = 0;
+		//check overflow
 		while (str[i][++j])
 		{
 			if (str[i][j] >= '0' && str[i][j] <= '9')

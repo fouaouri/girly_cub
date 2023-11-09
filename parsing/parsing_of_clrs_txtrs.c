@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_clrs_txtrs.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:05:16 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 23:31:39 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:09:32 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_substr(char *north)
 	start = 0;
 	i = 0;
 	end = ft_strlen(north);
-	end -= 2;
+	end -= 1;
 	while (north[start] != '.')
 		start++;
 	while (north[end] == ' ')
