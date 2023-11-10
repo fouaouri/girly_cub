@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_calors.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:22:44 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/10 02:55:23 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:56:05 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	count_to_allocate(int fd1, int i, char *str, struct s_mystruct *strct)
 	int	j;
 
 	j = 0;
+	l = 0;
 	while (str != NULL)
 	{
 		str = get_next_line(fd1);
