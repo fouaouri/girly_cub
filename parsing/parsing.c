@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 23:51:26 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/10 02:55:23 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	rectang_map(struct s_mystruct *strct)
 	int	j;
 
 	i = 0;
-	j = 0;
-	strct->rectang_map = malloc(sizeof(char *) * (strct->count_map + 2));
-	strct->max_x = ft_strlen(strct->square_map[0]) - 2;
+	strct->rectang_map = malloc(sizeof(char *)
+			* (ft_len(strct->square_map) + 1));
+	strct->max_x = ft_strlen_(strct->square_map[0]) - 2;
 	while (strct->square_map[i])
 	{
 		strct->rectang_map[i] = strct->square_map[i];
@@ -60,14 +60,12 @@ int	check_ligne(char *strct)
 
 void	parsing(char *file, int count, struct s_mystruct *strct)
 {
-	int					fd1;
-	int					i;
-	int					j;
-	int					l;
-	char				*str;
+	int		fd1;
+	int		i;
+	int		j;
+	char	*str;
 
 	i = 0;
-	l = 0;
 	strct->count = count;
 	strct->to_allocate = 0;
 	fd1 = open(file, O_RDONLY);
@@ -81,20 +79,7 @@ void	parsing(char *file, int count, struct s_mystruct *strct)
 	j = check_ligne(str);
 	if (j == 0)
 		strct->to_allocate++;
-	while (str != NULL)
-	{
-		str = get_next_line(fd1);
-		strct->file[++i] = str;
-		if (l < 6)
-		{
-			j = check_ligne(str);
-			if (j == 0)
-				strct->to_allocate++;
-		}
-		if (l > 6)
-			strct->to_allocate++;
-		l++;
-	}
+	count_to_allocate(fd1, i, str, strct);
 	second_parsing(strct);
 }
 
@@ -103,7 +88,7 @@ int	parce_file_name(char *name_file)
 	int	i;
 
 	i = 0;
-	if (ft_strlen(name_file) < 4)
+	if (ft_strlen_(name_file) < 4)
 		return (1);
 	while (name_file[i])
 		i++;
@@ -111,7 +96,7 @@ int	parce_file_name(char *name_file)
 	if (name_file[i] == 'b')
 	{
 		i--;
-		if(name_file[i] == 'u')
+		if (name_file[i] == 'u')
 		{
 			i--;
 			if (name_file[i] == 'c')
@@ -125,11 +110,11 @@ int	parce_file_name(char *name_file)
 	return (1);
 }
 
-void	pars_part(int ac, char **av,t_mystruct *param)
+void	pars_part(int ac, char **av, t_mystruct *param)
 {
-	int					i;
-	int					fd0;
-	char				*str;
+	int		i;
+	int		fd0;
+	char	*str;
 
 	if (ac != 2)
 		exit (write (2, "Error\ninvalide args number\n", 27));

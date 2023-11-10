@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_clrs_txtrs.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:05:16 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/09 13:09:32 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/10 02:58:30 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,9 @@ char	*color(char *north)
 
 	start = 0;
 	i = 0;
-	end = ft_strlen(north);
+	end = ft_strlen_(north);
 	end--;
 	while (north[start] < '0' || north[start] > '9')
-		start++;
-	while (north[end] == ' ')
-		end--;
-	str = malloc(sizeof(char) * ((end - start) + 1));
-	while (start < end)
-	{
-		str[i] = north[start];
-		i++;
-		start++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_substr(char *north)
-{
-	int		start;
-	int		end;
-	char	*str;
-	int		i;
-
-	start = 0;
-	i = 0;
-	end = ft_strlen(north);
-	end -= 1;
-	while (north[start] != '.')
 		start++;
 	while (north[end] == ' ')
 		end--;
@@ -103,7 +77,7 @@ void	clrs_txtrs1(struct s_mystruct *strct, int i, int j)
 		strct->no++;
 	}
 	else if (strct->clrs_txtrs[j][i] == 'S'
-		&& strct->clrs_txtrs[j][i + 1] == 'O' 
+		&& strct->clrs_txtrs[j][i + 1] == 'O'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
 		strct->south = ft_substr(strct->clrs_txtrs[j]);
@@ -116,7 +90,7 @@ void	clrs_txtrs1(struct s_mystruct *strct, int i, int j)
 		strct->c++;
 	}
 	else if (clrs_txtrs2(strct, i, j) == 1)
-		exit (write(1, "Error\ninvalide textures or colors\n", 34));
+		exit (write(2, "Error\ninvalide textures or colors\n", 34));
 }
 
 void	parsing_of_clrs_txtrs(struct s_mystruct *strct)

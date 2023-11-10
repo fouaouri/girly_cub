@@ -3,32 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:53:29 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 07:02:29 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/10 03:29:59 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char *north)
+int	ft_strlen_(char *str)
 {
-	int	start;
-	int	end;
-	char	*str;
 	int	i;
 
-	start = 0;
 	i = 0;
-	end = ft_strlen(north);
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_substr(char *north)
+{
+	int		start;
+	int		end;
+	char	*str;
+	int		i;
+	int		len;
+
+	start = 3;
+	i = 0;
+	end = ft_strlen_(north);
 	end -= 2;
-	while (north[start] != '.')
+	while (north[start] == ' ')
 		start++;
 	while (north[end] == ' ')
 		end--;
-	str = malloc(sizeof(char) * ((end - start) + 1));
-	while (start < end)
+	len = end - start;
+	str = malloc(sizeof(char) * (len + 1));
+	while (start <= end)
 	{
 		str[i] = north[start];
 		i++;

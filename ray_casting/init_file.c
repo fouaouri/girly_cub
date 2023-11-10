@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:23:37 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/09 13:09:57 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/10 03:32:33 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	init_mlx(t_builders *param)
 			param->pars->east, &h, &w);
 	if (!param->image_north || !param->image_w
 		|| !param->image_s || !param->image_e)
-		perror("Error\nInvalide texture .. try again !!\n");
+		exit (write (2, "Error\nInvalide texture .. try again !!\n", 39));
 }
 
 void	loop_mlx(t_builders *param)

@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 23:51:49 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/10 02:56:02 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,5 +191,17 @@ void	hori_up(t_builders *param);
 char	**ft_free(char **spliter);
 void	rectang_map(struct s_mystruct *strct);
 void	parsing_of_colors(struct s_mystruct *strct);
+int		check_ligne(char *strct);
+int		ft_mystrlen(char **str);
+int		ft_len(char **str);
+int		ft_strlen_(char *str);
+int		square_map2(struct s_mystruct *strct, int len);
+void	parse_first_line(struct s_mystruct *strct);
+void	check_space(struct s_mystruct *strct, int j, int i);
+void	check_space2(struct s_mystruct *strct, int j, int i);
+void	square_map3(struct s_mystruct *strct, int *j, int i, int l);
+void	check_last_ligne(struct s_mystruct *strct);
+void	new_ligne_in_map(struct s_mystruct *strct, int *j, int i);
+void	count_to_allocate(int fd1, int i, char *str, struct s_mystruct *strct);
 
 #endif

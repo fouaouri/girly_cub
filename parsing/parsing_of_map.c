@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:46:36 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/07 23:50:55 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/10 02:55:23 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,46 +29,25 @@ void	square_map(struct s_mystruct *strct)
 	int	j;
 
 	i = 0;
-	len = 0;
-	while (strct->map[i] != NULL)
-	{
-		if (ft_strlen(strct->map[i]) > len)
-			len = ft_strlen(strct->map[i]);
-		else
-			i++;
-	}
-	i = 0;
-	strct->square_map = malloc(sizeof(char *) * (strct->count_map + 2));
-	while (strct->map[i])
-	{
-		j = 0;
-		if (ft_strlen(strct->map[i]) <= len)
-		{
-			strct->square_map[i] = malloc(sizeof(char) * (len + 2));
-			while (strct->map[i][j] != '\0' && strct->map[i][j] != '\n')
-			{
-				strct->square_map[i][j] = strct->map[i][j];
-				j++;
-			}
-			while (j < len)
-			{
-				strct->square_map[i][j] = ' ';
-				j++;
-			}
-			strct->square_map[i][j] = '\n';
-			strct->square_map[i][j + 1] = '\0';
-		}
-		i++;
-	}
+	len = ft_mystrlen(strct->map);
+	strct->square_map = malloc(sizeof(char *) * (strct->count_map + 3));
+	strct->square_map[0] = malloc(sizeof(char) * (len + 1));
 	j = 0;
-	strct->square_map[i] = malloc(sizeof(char) * (len + 2));
+	while (j < len)
+	{
+		strct->square_map[0][j] = ' ';
+		j++;
+	}
+	strct->square_map[0][j] = '\0';
+	i = square_map2(strct, len);
+	j = 0;
+	strct->square_map[i] = malloc(sizeof(char) * (len + 1));
 	while (j < len)
 	{
 		strct->square_map[i][j] = ' ';
 		j++;
 	}
-	strct->square_map[i][j] = '\n';
-	strct->square_map[i][j + 1] = '\0';
+	strct->square_map[i][j] = '\0';
 	strct->square_map[i + 1] = NULL;
 }
 
@@ -78,44 +57,25 @@ void	invalide_char(struct s_mystruct *strct)
 	int	j;
 	int	len;
 
-	j = strct->count_map;
-	j--;
 	square_map(strct);
-	while (j > 0)
+	j = 1;
+	while (strct->square_map[j])
 	{
 		i = 0;
 		while (strct->square_map[j][i] == ' ')
 			i++;
 		if (strct->square_map[j][i] && strct->square_map[j][i] != '\n')
 		{
-			len = ft_strlen(strct->square_map[j]);
-			len -= 2;
+			len = ft_strlen_(strct->square_map[j]);
+			len--;
 			while (i < len)
 			{
-				if (strct->square_map[j][i] == ' ' && (strct->square_map[j - 1][i] == '0'
-					|| strct->square_map[j + 1][i] == '0'
-					|| strct->square_map[j - 1][i] == 'N' || strct->square_map[j + 1][i] == 'N'
-					|| strct->square_map[j + 1][i] == 'E' || strct->square_map[j - 1][i] == 'E'
-					|| strct->square_map[j - 1][i] == 'W' || strct->square_map[j + 1][i] == 'W'
-					|| strct->square_map[j + 1][i] == 'S' || strct->square_map[j - 1][i] == 'S'))
-					exit (write (1, "Error\nThe map must be closed16 by walls\n", 39));
-				else if (strct->square_map[j][i] == ' ' 
-					&& (strct->square_map[j][i - 1] == '0'
-					|| strct->square_map[j][i + 1] == '0'
-					|| strct->square_map[j][i + 1] == 'N' || strct->square_map[j][i - 1] == 'N'
-					|| strct->square_map[j][i - 1] == 'W' || strct->square_map[j][i + 1] == 'W'
-					|| strct->square_map[j][i - 1] == 'E' || strct->square_map[j][i + 1] == 'E'
-					|| strct->square_map[j][i - 1] == 'S' || strct->square_map[j][i + 1] == 'S'))
-					exit (write (1, "Error\ninvalide character\n", 25));
-				else if (strct->square_map[j][i] != '0' && strct->square_map[j][i] != '1' && strct->square_map[j][i] != 'N'
-					&& strct->square_map[j][i] != 'S' && strct->square_map[j][i] != 'E' && strct->square_map[j][i] != 'W'
-					&& strct->square_map[j][i] != ' ')
-					exit (write (1, "Error\ninvalide character\n", 25));
-				else
-					i++;
+				check_space(strct, j, i);
+				check_space2(strct, j, i);
+				i++;
 			}
 		}
-		j--;
+		j++;
 	}
 }
 
@@ -132,14 +92,14 @@ void	invalide_wall_(struct s_mystruct *strct)
 		i = 0;
 		while (strct->map[j][i] && strct->map[j][i] == ' ')
 			i++;
-		if (strct->map[j][i] != '\n')
+		if (strct->map[j][i] != '\0' && strct->map[j][i] != '\n')
 		{
-			len = ft_strlen(strct->map[j]);
-			len -= 2;
+			len = ft_strlen_(strct->map[j]);
+			len -= 1;
 			while (len > 0 && strct->map[j][len] == ' ')
 				len--;
-			if (strct->map[j][i] != '1' || strct->map[j][len] != '1')
-				exit (write(1, "error741\n", 9));
+			if (strct->map[j][i] != '1' && strct->map[j][len] != '1')
+				exit (write(2, "Error\nshould start and end with one\n", 36));
 		}
 		j--;
 	}
@@ -150,74 +110,19 @@ int	invalide_wall(struct s_mystruct *strct)
 	int	i;
 	int	j;
 
-	i = 0;
 	j = 0;
 	strct->count_map = count_map(strct->map);
-	while (strct->map[0][i] && strct->map[0][i] == ' ')
-		i++;
-	while (strct->map[0][i] != '\n')
-	{
-		if (strct->map[0][i] != '1' && strct->map[0][i] != ' ')
-			exit(write (1, "rerrrrrr\n", 9));
-		i++;
-	}
+	parse_first_line(strct);
 	while (j < strct->count_map)
 	{
 		i = 0;
 		while (strct->map[j][i] == ' ')
 			i++;
 		if (strct->map[j][i] == '\n')
-		{
-			i = 0;
-			while (i < ft_strlen(strct->map[j - 1]) - 2)
-			{
-				while (strct->map[j - 1][i] == ' ')
-					i++;
-				if (i < ft_strlen(strct->map[j - 1]) - 2 && strct->map[j - 1][i] != '1')
-					exit (write (1, "Error120\n", 9));
-				i++;
-			}
-			while (j < strct->count_map)
-			{
-				i = 0;
-				while (strct->map[j][i] == ' ')
-					i++;
-				if (strct->map[j][i] != '\n')
-				{
-					while (i < ft_strlen(strct->map[j]) - 2)
-					{
-						while (strct->map[j][i] == ' ')
-							i++;
-						if (i < ft_strlen(strct->map[j]) - 2 && strct->map[j][i] != '1')
-							exit (write (1, "Error1230\n", 10));
-						i++;
-					}
-					break ;
-				}
-				j++;
-			}
-		}
+			new_ligne_in_map(strct, &j, i);
 		j++;
 	}
-	j = strct->count_map;
-	j--;
-	while (j > 0)
-	{
-		i = 0;
-		while (strct->map[j][i] && strct->map[j][i] == ' ')
-			i++;
-		if (strct->map[j][i] != '\n')
-		{
-			while (strct->map[j][i])
-			{
-				if (strct->map[j][i] != '1' && strct->map[j][i] != ' ' && strct->map[j][i] != '\n')
-					exit (write (1, "rrrrrrrrr\n", 10));
-				i++;
-			}
-			break ;
-		}
-		j--;
-	}
+	check_last_ligne(strct);
 	invalide_wall_(strct);
 	return (0);
 }
