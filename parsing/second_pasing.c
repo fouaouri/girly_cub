@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 18:46:23 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:45:12 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	num_of_player(struct s_mystruct *strct)
 		j++;
 	}
 	if (p != 1)
-		exit (write (2, "Error\nthe player should be one\n", 31));
+		exit_error("the player should be one");
 }
 
 void	helper(struct s_mystruct *strct)
@@ -56,15 +56,12 @@ void	store_map(struct s_mystruct *strct, int i)
 	flag = 0;
 	l = strct->to_allocate - i;
 	if (strct->content[i] == NULL)
-		exit (write (1, "Error\nthere is no map\n", 22));
+		exit_error("there is no map");
 	strct->map = malloc(sizeof(char *) * (l + 1));
 	while (j < l)
 	{
 		if (!is_space(strct->content[i]) && flag == 1)
-		{
-			printf("Error :\nnew line\n");
-			exit(1);
-		}
+			exit_error("there is a new line in the map");
 		if (is_space(strct->content[i]))
 			flag = 1;
 		strct->map[j] = strct->content[i];

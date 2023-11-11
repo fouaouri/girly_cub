@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:46:36 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/10 02:55:23 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:38:58 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	invalide_wall_(struct s_mystruct *strct)
 			while (len > 0 && strct->map[j][len] == ' ')
 				len--;
 			if (strct->map[j][i] != '1' && strct->map[j][len] != '1')
-				exit (write(2, "Error\nshould start and end with one\n", 36));
+				exit_error("should start and end with one");
 		}
 		j--;
 	}

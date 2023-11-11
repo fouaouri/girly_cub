@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 16:19:37 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:43:26 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ void	parsing(char *file, int count, struct s_mystruct *strct)
 	strct->to_allocate = 0;
 	fd1 = open(file, O_RDONLY);
 	if (fd1 < 0)
-		exit (write (2, "Error\nfailed fd1\n", 16));
+		exit_error("file failed");
 	strct->file = malloc(sizeof(char *) * (strct->count + 1));
 	if (strct->file == NULL)
-		exit (write (2, "Error\nmalloc faild\n", 19));
+		exit_error("malloc faild");
 	str = get_next_line(fd1);
 	strct->file[i] = str;
 	j = check_ligne(str);
@@ -117,13 +117,13 @@ void	pars_part(int ac, char **av, t_mystruct *param)
 	char	*str;
 
 	if (ac != 2)
-		exit (write (2, "Error\ninvalide args number\n", 27));
+		exit_error("invalide args number");
 	i = parce_file_name(av[1]);
 	if (i == 1)
-		exit (write (2, "Error\ninvalide file name\n", 25));
+		exit_error("invalide file name");
 	fd0 = open(av[1], O_RDONLY);
 	if (fd0 < 0)
-		exit (write (2, "Error\nfailed fd0\n", 16));
+		exit_error("file failed");
 	str = get_next_line(fd0);
 	i = 0;
 	while (str != NULL)

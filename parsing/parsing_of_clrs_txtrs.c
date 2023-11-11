@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_clrs_txtrs.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:05:16 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 17:51:35 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:38:36 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	clrs_txtrs1(struct s_mystruct *strct, int i, int j)
 		strct->c++;
 	}
 	else if (clrs_txtrs2(strct, i, j) == 1)
-		exit (write(2, "Error\ninvalide textures or colors\n", 34));
+		exit_error("invalide textures or colors");
 }
 
 void	parsing_of_clrs_txtrs(struct s_mystruct *strct)
@@ -118,5 +118,5 @@ void	parsing_of_clrs_txtrs(struct s_mystruct *strct)
 	}
 	if (strct->no != 1 || strct->so != 1 || strct->we != 1
 		|| strct->ea != 1 || strct->f != 1 || strct->c != 1)
-		exit (write (2, "Error\ndouplicate an element\n", 28));
+		exit_error("douplicate an element");
 }

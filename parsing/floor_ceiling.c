@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 01:04:19 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 18:47:47 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:36:31 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_comma(char *str)
 		i++;
 	}
 	if (len != 2)
-		exit (write (1, "Error\nerror in colors\n", 22));
+		exit_error("check colors");
 }
 
 void	no_check(struct s_mystruct *strct, int j)

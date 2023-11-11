@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:22:44 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 18:47:35 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:37:42 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_myatoi2(char *str, int *r)
 		if (str[j] >= '0' && str[j] <= '9')
 			*r = *r * 10 + str[j] - 48;
 		else
-			exit (write (1, "Error in colors1\n", 17));
+			exit_error("check colors");
 		j++;
 	}
 }
@@ -72,11 +72,11 @@ int	*ft_myatoi(char **str)
 	{
 		r = 0;
 		if (ft_strlen_(str[i]) > 3)
-			exit (write (1, "Error in colors2\n", 17));
+			exit_error("check colors");
 		ft_myatoi2(str[i], &r);
 		num[i] = r;
 		if (r < 0 || r > 255)
-			exit (write (1, "Error in colors2\n", 17));
+			exit_error("check colors");
 		i++;
 	}
 	ft_free (str);
@@ -95,7 +95,7 @@ void	parsing_of_colors(struct s_mystruct *strct)
 	ceiling = ft_split(strct->ceiling, ',');
 	floor = ft_split(strct->floor, ',');
 	if (ft_len(ceiling) != 3 || ft_len(floor) != 3)
-		exit (write (1, "Error\nerror in colors\n", 22));
+		exit_error("check colors");
 	c = ft_myatoi(ceiling);
 	f = ft_myatoi(floor);
 	strct->c_value = 0;

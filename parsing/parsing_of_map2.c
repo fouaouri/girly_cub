@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_map2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:13:48 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/10 02:55:23 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:41:05 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ void	check_space(struct s_mystruct *strct, int j, int i)
 		|| strct->square_map[j + 1][i] == 'W'
 		|| strct->square_map[j + 1][i] == 'S'
 		|| strct->square_map[j - 1][i] == 'S'))
-		exit (write (1,
-				"Error\nThe map must be closed16 by walls\n", 39));
+		exit_error("The map must be closed by walls");
 	else if (strct->square_map[j][i] == ' '
 		&& (strct->square_map[j][i - 1] == '0'
 		|| strct->square_map[j][i + 1] == '0'
@@ -74,7 +73,7 @@ void	check_space(struct s_mystruct *strct, int j, int i)
 		|| strct->square_map[j][i + 1] == 'E'
 		|| strct->square_map[j][i - 1] == 'S'
 		|| strct->square_map[j][i + 1] == 'S'))
-		exit (write (1, "Error\ninvalide character\n", 25));
+		exit_error("invalide character");
 }
 
 void	check_space2(struct s_mystruct *strct, int j, int i)
@@ -86,7 +85,7 @@ void	check_space2(struct s_mystruct *strct, int j, int i)
 		&& strct->square_map[j][i] != 'E'
 		&& strct->square_map[j][i] != 'W'
 		&& strct->square_map[j][i] != ' ')
-		exit (write (1, "Error\ninvalide character\n", 25));
+		exit_error("invalide character");
 }
 
 int	ft_mystrlen(char **str)
