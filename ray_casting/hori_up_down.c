@@ -6,7 +6,11 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:42:17 by fouaouri          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/10 20:43:29 by nben-ais         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/10 17:05:09 by fouaouri         ###   ########.fr       */
+>>>>>>> 9b08373431e0867e95a2827b7b09e13bb9d94cd9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +21,8 @@ void	init_hori_up(t_builders *param)
 	if (ft_right_left(param->coors->t) == 1)
 	{
 		param->coors->f = param->coors->t - ((3 * PI) / 2);
-		param->coors->point_x = tan(param->coors->f) * (param->coors->p_y
-				- (int)param->coors->p_y) + param->coors->p_x;
+		param->coors->point_x = tan(param->coors->f)
+			* (param->coors->p_y - (int)param->coors->p_y) + param->coors->p_x;
 	}
 	else if (ft_right_left(param->coors->t) == -1)
 	{
@@ -43,7 +47,7 @@ void	hori_up(t_builders *param)
 {
 	init_hori_up(param);
 	while (param->pars->rectang_map[(int)param->coors->point_y
-			- 1][(int) param->coors->point_x] != '1')
+			- 1][(int)param->coors->point_x] != '1')
 	{
 		param->coors->c += 1 / cos(param->coors->f);
 		if (ft_right_left(param->coors->t) == -1)
@@ -94,7 +98,7 @@ void	hori_down(t_builders *param)
 {
 	init_hori_down(param);
 	while (param->pars->rectang_map[(int)param->coors->point_y
-			+ 1][(int) param->coors->point_x] != '1')
+			+ 1][(int)param->coors->point_x] != '1')
 	{
 		param->coors->c += 1 / cos(param->coors->f);
 		if (ft_right_left(param->coors->t) == -1)

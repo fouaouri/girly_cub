@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:06 by fouaouri          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/10 19:20:20 by nben-ais         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/10 20:14:19 by fouaouri         ###   ########.fr       */
+>>>>>>> 9b08373431e0867e95a2827b7b09e13bb9d94cd9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +27,7 @@ void	init_pose_player(t_builders *param)
 void	pose_player(t_builders *param)
 {
 	init_pose_player(param);
-	while (param->coors->b <= 1.0471975512)
+	while (param->coors->b <= (PI / 3))
 	{
 		return_after_2_pi1(param);
 		draw_rays(param);

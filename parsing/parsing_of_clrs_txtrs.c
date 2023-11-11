@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:05:16 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 00:44:19 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:16:24 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	clrs_txtrs2(struct s_mystruct *strct, int i, int j)
 		strct->f++;
 		return (0);
 	}
-	else
+	elseq
 		return (1);
 }
 
@@ -81,10 +81,7 @@ void	clrs_txtrs1(struct s_mystruct *strct, int i, int j)
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
 		strct->south = ft_substr(strct->clrs_txtrs[j]);
-		strct->so++;
-	}
-	else if (strct->clrs_txtrs[j][i] == 'C'
-		&& strct->clrs_txtrs[j][i + 1] == ' ')
+		strct->so++;q
 	{
 		strct->ceiling = color(strct->clrs_txtrs[j]);
 		strct->c++;

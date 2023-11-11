@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/11 01:21:08 by nben-ais         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/10 17:05:58 by fouaouri         ###   ########.fr       */
+>>>>>>> 9b08373431e0867e95a2827b7b09e13bb9d94cd9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +168,6 @@ void	hori_down(t_builders *param);
 void	vertical_down(t_builders *param);
 void	vertical_up(t_builders *param);
 void	draw_rays(t_builders *param);
-void	draw_mini_map(t_builders *param);
 int		realising(int key, t_builders *param);
 int		hooking(int key, t_builders *param);
 void	short_ligne(char **str, int len);
@@ -204,6 +207,9 @@ void	check_last_ligne(struct s_mystruct *strct);
 void	new_ligne_in_map(struct s_mystruct *strct, int *j, int i);
 void	count_to_allocate(int fd1, int i, char *str, struct s_mystruct *strct);
 int		close_win(void);
+<<<<<<< HEAD
 void	check_comma(char *str);
+=======
+>>>>>>> 9b08373431e0867e95a2827b7b09e13bb9d94cd9
 
 #endif
