@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/10 02:56:02 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 01:21:08 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,5 +203,7 @@ void	square_map3(struct s_mystruct *strct, int *j, int i, int l);
 void	check_last_ligne(struct s_mystruct *strct);
 void	new_ligne_in_map(struct s_mystruct *strct, int *j, int i);
 void	count_to_allocate(int fd1, int i, char *str, struct s_mystruct *strct);
+int		close_win(void);
+void	check_comma(char *str);
 
 #endif

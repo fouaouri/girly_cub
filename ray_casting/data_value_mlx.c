@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:24:40 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 21:04:57 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/10 19:26:37 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,13 @@ int	hooking(int key, t_builders *param)
 {
 	if (key == ESC)
 	{
+		mlx_destroy_image(param->mlx, param->image);
+		mlx_destroy_image(param->mlx, param->image_north);
+		mlx_destroy_image(param->mlx, param->image_s);
+		mlx_destroy_image(param->mlx, param->image_e);
+		mlx_destroy_image(param->mlx, param->image_w);
 		mlx_destroy_window(param->mlx, param->mlx_win);
-		printf("you end the game");
+		printf("you end the game\n");
 		free(param);
 		exit(0);
 	}

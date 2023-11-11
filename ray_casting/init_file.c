@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:23:37 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/10 03:32:33 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:43:49 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	loop_mlx(t_builders *param)
 			&h1, &param->coors->size_line_e, &w2);
 	mlx_hook(param->mlx_win, 2, 1L << 0, hooking, param);
 	mlx_hook(param->mlx_win, 3, 1L << 1, realising, param);
+	mlx_hook(param->mlx_win, 17, 0l, close_win, NULL);
 	mlx_loop_hook(param->mlx, key_hook, param);
 	mlx_loop(param->mlx);
 }

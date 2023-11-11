@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:22:44 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/10 02:55:23 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 01:21:58 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	count_to_allocate(int fd1, int i, char *str, struct s_mystruct *strct)
 	int	j;
 
 	j = 0;
+	l = 0;
 	while (str != NULL)
 	{
 		str = get_next_line(fd1);
@@ -89,6 +90,8 @@ void	parsing_of_colors(struct s_mystruct *strct)
 	int		*c;
 	int		*f;
 
+	check_comma(strct->ceiling);
+	check_comma(strct->floor);
 	ceiling = ft_split(strct->ceiling, ',');
 	floor = ft_split(strct->floor, ',');
 	if (ft_len(ceiling) != 3 || ft_len(floor) != 3)

@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:44:38 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 20:16:38 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:42:02 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	while_flag_1(t_builders *param)
 		param->coors->c1 += 1 / cos(param->coors->g);
 		param->coors->point_x -= 1;
 		param->coors->point_y += tan(param->coors->g) * 1;
-		if (param->coors->point_y > param->pars->count_map - 1)
-			param->coors->point_y = param->pars->count_map - 1;
+		if (param->coors->point_y > param->pars->count_map)
+			param->coors->point_y = param->pars->count_map;
 		if (param->coors->point_x > param->pars->max_x)
 			param->coors->point_x = param->pars->max_x;
 		if (param->coors->point_y < 0)
@@ -39,8 +39,8 @@ void	while_flag_2(t_builders *param)
 		param->coors->c1 += 1 / cos(param->coors->g);
 		param->coors->point_x += 1;
 		param->coors->point_y += tan(param->coors->g) * 1;
-		if (param->coors->point_y > param->pars->count_map - 1)
-			param->coors->point_y = param->pars->count_map - 1;
+		if (param->coors->point_y > param->pars->count_map)
+			param->coors->point_y = param->pars->count_map;
 		if (param->coors->point_x > param->pars->max_x)
 			param->coors->point_x = param->pars->max_x;
 		if (param->coors->point_y < 0)
@@ -82,8 +82,8 @@ void	vertical_down(t_builders *param)
 		param->coors->flag = 1;
 	param->coors->g = param->coors->t;
 	if_flags(param);
-	if (param->coors->point_y > param->pars->count_map - 1)
-		param->coors->point_y = param->pars->count_map - 1;
+	if (param->coors->point_y > param->pars->count_map)
+		param->coors->point_y = param->pars->count_map;
 	if (param->coors->point_x > param->pars->max_x)
 		param->coors->point_x = param->pars->max_x;
 	if (param->coors->point_y < 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vertical_up.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:45:59 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 11:46:25 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:42:02 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	while_flag_3(t_builders *param)
 		param->coors->c1 += 1 / cos(param->coors->g);
 		param->coors->point_x -= 1;
 		param->coors->point_y -= tan(param->coors->g) * 1;
-		if (param->coors->point_y > param->pars->count_map - 1)
-			param->coors->point_y = param->pars->count_map - 1;
+		if (param->coors->point_y > param->pars->count_map)
+			param->coors->point_y = param->pars->count_map;
 		if (param->coors->point_x > param->pars->max_x)
 			param->coors->point_x = param->pars->max_x;
 		if (param->coors->point_y < 0)
@@ -39,8 +39,8 @@ void	while_flag_4(t_builders *param)
 		param->coors->c1 += 1 / cos(param->coors->g);
 		param->coors->point_x += 1;
 		param->coors->point_y -= tan(param->coors->g) * 1;
-		if (param->coors->point_y > param->pars->count_map - 1)
-			param->coors->point_y = param->pars->count_map - 1;
+		if (param->coors->point_y > param->pars->count_map)
+			param->coors->point_y = param->pars->count_map;
 		if (param->coors->point_x > param->pars->max_x)
 			param->coors->point_x = param->pars->max_x;
 		if (param->coors->point_y < 0)
@@ -79,8 +79,8 @@ void	vertical_up(t_builders *param)
 		param->coors->flag = 1;
 	if_flags1(param);
 	param->coors->point_x = (int)param->coors->p_x;
-	if (param->coors->point_y > param->pars->count_map - 1)
-		param->coors->point_y = param->pars->count_map - 1;
+	if (param->coors->point_y > param->pars->count_map)
+		param->coors->point_y = param->pars->count_map;
 	if (param->coors->point_x > param->pars->max_x)
 		param->coors->point_x = param->pars->max_x;
 	if (param->coors->point_y < 0)

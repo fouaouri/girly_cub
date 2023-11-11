@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_dis.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:07:52 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 17:13:40 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:44:45 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	close_win(void)
+{
+	printf("You end the program!\n");
+	exit (0);
+	return (0);
+}
 
 void	init_draw_rays(t_builders *param)
 {

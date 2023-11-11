@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   floor_ceiling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 00:04:09 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/10 19:15:00 by nben-ais         ###   ########.fr       */
+/*   Created: 2023/11/11 01:04:19 by nben-ais          #+#    #+#             */
+/*   Updated: 2023/11/11 01:22:17 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "../ray_casting/cub3d.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+void	check_comma(char *str)
 {
-	size_t	i;
-	size_t	j;
-	size_t	l;
-	char	*lorst;
-
-	if (!s1 || !s2)
-		return (NULL);
+	int	i;
+	int	len;
+	
 	i = 0;
-	j = 0;
-	l = ft_strlen(s1) + ft_strlen(s2);
-	lorst = malloc(l + 1);
-	if (!lorst)
-		return (NULL);
-	while (s1[i])
+	len = 0;
+	while (str[i])
 	{
-		lorst[i] = s1[i];
+		if (str[i] == ',')
+			len++;
 		i++;
 	}
-	while (s2[j])
-		lorst[i++] = s2[j++];
-	lorst[i] = '\0';
-	free (s1);
-	return (lorst);
+	if (len != 2)
+		exit (write (1, "Error\nerror in colors\n", 22));
 }
