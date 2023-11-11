@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   second_pasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 16:41:14 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 18:46:23 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,42 @@ void	num_of_player(struct s_mystruct *strct)
 		exit (write (2, "Error\nthe player should be one\n", 31));
 }
 
+void	helper(struct s_mystruct *strct)
+{
+	parsing_of_clrs_txtrs(strct);
+	parsing_of_colors(strct);
+	invalide_wall(strct);
+	invalide_char(strct);
+	num_of_player(strct);
+}
+
 void	store_map(struct s_mystruct *strct, int i)
 {
 	int	j;
 	int	l;
+	int	flag;
 
 	j = 0;
+	flag = 0;
 	l = strct->to_allocate - i;
 	if (strct->content[i] == NULL)
 		exit (write (1, "Error\nthere is no map\n", 22));
 	strct->map = malloc(sizeof(char *) * (l + 1));
 	while (j < l)
 	{
+		if (!is_space(strct->content[i]) && flag == 1)
+		{
+			printf("Error :\nnew line\n");
+			exit(1);
+		}
+		if (is_space(strct->content[i]))
+			flag = 1;
 		strct->map[j] = strct->content[i];
 		i++;
 		j++;
 	}
 	strct->map[j] = NULL;
-	parsing_of_clrs_txtrs(strct);
-	parsing_of_colors(strct);
-	invalide_wall(strct);
-	invalide_char(strct);
-	num_of_player(strct);
+	helper(strct);
 }
 
 void	store_clrs_txtrs(struct s_mystruct *strct)
