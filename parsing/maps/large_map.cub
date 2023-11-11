@@ -1,10 +1,10 @@
 C 173,216,255
-NO ./ray_casting/textures/n.xpm 
-SO ./ray_casting/textures/s.xpm 
-WE ./ray_casting/textures/w.xpm 
+NO ./ray_casting/textures/n.xpm
+SO ./ray_casting/textures/s.xpm
+WE ./ray_casting/textures/w.xpm
 EA ./ray_casting/textures/e.xpm
 
-F 1,0,255
+F 200,200,255
 
 
         1111111111111111111111111

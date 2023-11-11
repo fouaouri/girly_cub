@@ -6,20 +6,13 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:07:52 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/11 13:28:06 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 17:35:38 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 int	close_win(void)
-{
-	printf("You end the program!\n");
-	exit (0);
-	return (0);
-}
-
-void	init_draw_rays(t_builders *param)
 {
 	printf("You end the program!\n");
 	exit (0);

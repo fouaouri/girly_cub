@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:23:09 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/11 01:00:21 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 15:44:37 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,5 @@ char	**ft_split(char const *s, char c)
 			s++;
 	}
 	spliter[j] = 0;
-	j = 0;
-	while (spliter[j])
-	{
-		printf ("==>%s\n", spliter[j]);
-		j++;
-	}
 	return (spliter);
 }

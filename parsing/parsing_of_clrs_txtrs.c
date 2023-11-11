@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:05:16 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 13:16:24 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/11 17:51:35 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ char	*color(char *north)
 	char	*str;
 	int		i;
 
-	start = 0;
+	start = 2;
 	i = 0;
 	end = ft_strlen_(north);
 	end--;
-	while (north[start] < '0' || north[start] > '9')
+	while (north[start] == ' ')
 		start++;
 	while (north[end] == ' ')
 		end--;
 	str = malloc(sizeof(char) * ((end - start) + 1));
+	if (!str)
+		return (NULL);
 	while (start < end)
 	{
 		str[i] = north[start];
@@ -44,26 +46,26 @@ int	clrs_txtrs2(struct s_mystruct *strct, int i, int j)
 		&& strct->clrs_txtrs[j][i + 1] == 'E'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
-		strct->west = ft_substr(strct->clrs_txtrs[j]);
-		strct->we++;
+		we_check(strct, j);
 		return (0);
 	}
 	else if (strct->clrs_txtrs[j][i] == 'E'
 		&& strct->clrs_txtrs[j][i + 1] == 'A'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
-		strct->east = ft_substr(strct->clrs_txtrs[j]);
-		strct->ea++;
+		ea_check(strct, j);
 		return (0);
 	}
 	else if (strct->clrs_txtrs[j][i] == 'F'
 		&& strct->clrs_txtrs[j][i + 1] == ' ')
 	{
+		if (strct->f == 1)
+			free(strct->floor);
 		strct->floor = color(strct->clrs_txtrs[j]);
 		strct->f++;
 		return (0);
 	}
-	elseq
+	else
 		return (1);
 }
 
@@ -72,17 +74,21 @@ void	clrs_txtrs1(struct s_mystruct *strct, int i, int j)
 	if (strct->clrs_txtrs[j][i] == 'N'
 		&& strct->clrs_txtrs[j][i + 1] == 'O'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
-	{
-		strct->north = ft_substr(strct->clrs_txtrs[j]);
-		strct->no++;
-	}
+		no_check(strct, j);
 	else if (strct->clrs_txtrs[j][i] == 'S'
 		&& strct->clrs_txtrs[j][i + 1] == 'O'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
+		if (strct->so == 1)
+			free(strct->south);
 		strct->south = ft_substr(strct->clrs_txtrs[j]);
-		strct->so++;q
+		strct->so++;
+	}
+	else if (strct->clrs_txtrs[j][i] == 'C'
+		&& strct->clrs_txtrs[j][i + 1] == ' ')
 	{
+		if (strct->c == 1)
+			free(strct->ceiling);
 		strct->ceiling = color(strct->clrs_txtrs[j]);
 		strct->c++;
 	}
@@ -112,5 +118,5 @@ void	parsing_of_clrs_txtrs(struct s_mystruct *strct)
 	}
 	if (strct->no != 1 || strct->so != 1 || strct->we != 1
 		|| strct->ea != 1 || strct->f != 1 || strct->c != 1)
-		exit (write (1, "Error\ndouplicate an element\n", 28));
+		exit (write (2, "Error\ndouplicate an element\n", 28));
 }
