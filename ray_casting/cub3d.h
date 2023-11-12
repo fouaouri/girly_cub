@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/11 18:44:14 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/11 23:06:03 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,5 +208,6 @@ void	we_check(struct s_mystruct *strct, int j);
 void	ea_check(struct s_mystruct *strct, int j);
 void	check_comma(char *str);
 void	no_check(struct s_mystruct *strct, int j);
+void	exit_error(char *str);
 
 #endif

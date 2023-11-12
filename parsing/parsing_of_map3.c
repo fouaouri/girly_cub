@@ -6,17 +6,11 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 00:26:17 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 22:35:58 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:17:27 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ray_casting/cub3d.h"
-
-void	exit_error(char *str)
-{
-	printf("Error!\n%s\n", str);
-	exit(1);
-}
 
 void	parse_first_line(struct s_mystruct *strct)
 {

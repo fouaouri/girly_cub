@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_value_mlx.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:24:40 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/11 17:52:25 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:15:46 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	hooking(int key, t_builders *param)
 	if (key == D_RIGHT)
 		param->up_down = 3;
 	if (key == RIGHT)
-		param->view = 0.02;
+		param->view = 0.01;
 	if (key == LEFT)
-		param->view = -0.02;
+		param->view = -0.01;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 21:42:51 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/07 08:36:09 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:15:35 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,53 @@
 
 void	move_player_up(t_builders *param)
 {
+	double	s;
+
+	s = param->coors->p_y;
 	if (check_wall(param,
 			(int)(param->coors->p_y + 0.5 * sin(param->coors->turn_direc)),
-		(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc))))
-	{
-		param->coors->p_x += 0.1 * cos(param->coors->turn_direc);
+		(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc)))
+				&& check_wall(param,
+			(int)(param->coors->p_y + 0.5 * sin(param->coors->turn_direc)),
+			(int)(param->coors->p_x)))
 		param->coors->p_y += 0.1 * sin(param->coors->turn_direc);
-	}
+	if (check_wall(param,
+			(int)(s + 0.5 * sin(param->coors->turn_direc)),
+		(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc)))
+					&& check_wall(param,
+				(int)(s),
+				(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc))))
+		param->coors->p_x += 0.1 * cos(param->coors->turn_direc);
 }
 
 void	move_player_down(t_builders *param)
 {
+	double	s;
+
+	s = param->coors->p_y;
 	if (check_wall(param,
 			(int)(param->coors->p_y - 0.5 * sin(param->coors->turn_direc)),
-		(int)(param->coors->p_x - 0.5 * cos(param->coors->turn_direc))))
-	{
-		param->coors->p_x -= 0.1 * cos(param->coors->turn_direc);
+		(int)(param->coors->p_x - 0.5 * cos(param->coors->turn_direc)))
+					&& check_wall(param,
+			(int)(param->coors->p_y - 0.5 * sin(param->coors->turn_direc)),
+			(int)(param->coors->p_x)))
 		param->coors->p_y -= 0.1 * sin(param->coors->turn_direc);
-	}
+	if (check_wall(param,
+			(int)(s - 0.5 * sin(param->coors->turn_direc)),
+		(int)(param->coors->p_x - 0.5 * cos(param->coors->turn_direc)))
+				&& check_wall(param,
+				(int)(s),
+				(int)(param->coors->p_x - 0.5 * cos(param->coors->turn_direc))))
+		param->coors->p_x -= 0.1 * cos(param->coors->turn_direc);
 }
 
 void	move_player_right(t_builders *param)
 {
 	if (check_wall(param,
-			(int)(param->coors->p_y + 0.5 * sin(param->coors->turn_direc
-				+ (PI / 2))),
-		(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc
-			+ (PI / 2)))))
+			(int)(param->coors->p_y + 0.5
+			* sin(param->coors->turn_direc + (PI / 2))),
+		(int)(param->coors->p_x + 0.5
+		* cos(param->coors->turn_direc + (PI / 2)))))
 	{
 		param->coors->p_x += 0.05 * cos(param->coors->turn_direc + (PI / 2));
 		param->coors->p_y += 0.05 * sin(param->coors->turn_direc + (PI / 2));
@@ -50,10 +70,10 @@ void	move_player_right(t_builders *param)
 void	move_player_left(t_builders *param)
 {
 	if (check_wall(param,
-			(int)(param->coors->p_y + 0.5 * sin(param->coors->turn_direc
-				- (PI / 2))),
-		(int)(param->coors->p_x + 0.5 * cos(param->coors->turn_direc
-			- (PI / 2)))))
+			(int)(param->coors->p_y + 0.5
+			* sin(param->coors->turn_direc - (PI / 2))),
+		(int)(param->coors->p_x + 0.5
+		* cos(param->coors->turn_direc - (PI / 2)))))
 	{
 		param->coors->p_x += 0.05 * cos(param->coors->turn_direc - (PI / 2));
 		param->coors->p_y += 0.05 * sin(param->coors->turn_direc - (PI / 2));

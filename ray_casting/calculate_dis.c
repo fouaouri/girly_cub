@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_dis.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 20:07:52 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/11 17:35:38 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:17:15 by fouaouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ int	close_win(void)
 	printf("You end the program!\n");
 	exit (0);
 	return (0);
+}
+
+void	exit_error(char *str)
+{
+	printf("Error!\n%s\n", str);
+	exit(1);
 }
 
 void	init_draw_rays(t_builders param)
