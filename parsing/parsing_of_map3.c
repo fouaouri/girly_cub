@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_map3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 00:26:17 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/12 00:17:27 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:55:15 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,50 +54,12 @@ void	check_last_ligne(struct s_mystruct *strct)
 	}
 }
 
-void	new_ligne_in_map2(struct s_mystruct *strct, int *j, int i)
-{
-	while (i < ft_strlen_(strct->map[(*j) - 1]) - 2)
-	{
-		while (strct->map[(*j) - 1][i] == ' ')
-			i++;
-		if (i < ft_strlen_(strct->map[(*j) - 1]) - 2
-			&& strct->map[(*j) - 1][i] != '1')
-			exit_error("map have new line");
-		i++;
-	}
-}
-
-void	new_ligne_in_map(struct s_mystruct *strct, int *j, int i)
-{
-	new_ligne_in_map2(strct, j, i);
-	while (*j < strct->count_map)
-	{
-		i = 0;
-		while (strct->map[*j][i] == ' ')
-			i++;
-		if (strct->map[*j][i] != '\n')
-		{
-			while (i < ft_strlen_(strct->map[*j]) - 2)
-			{
-				while (strct->map[*j][i] == ' ')
-					i++;
-				if (i < ft_strlen_(strct->map[*j]) - 2
-					&& strct->map[*j][i] != '1')
-					exit_error("map have new line");
-				i++;
-			}
-			break ;
-		}
-		(*j)++;
-	}
-}
-
 int	ft_strlen__(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 		i++;
 	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 01:04:19 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 22:36:31 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:41:54 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,4 @@ void	ea_check(struct s_mystruct *strct, int j)
 		free(strct->east);
 	strct->east = ft_substr(strct->clrs_txtrs[j]);
 	strct->ea++;
-}
-
-int	is_space(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= 9 && str[i] <= 13) && str[i] != 32)
-			return (0);
-		i++;
-	}
-	return (1);
 }

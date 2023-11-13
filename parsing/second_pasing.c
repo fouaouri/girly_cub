@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   second_pasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 22:45:12 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:18:59 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,39 +37,37 @@ void	num_of_player(struct s_mystruct *strct)
 		exit_error("the player should be one");
 }
 
-void	helper(struct s_mystruct *strct)
-{
-	parsing_of_clrs_txtrs(strct);
-	parsing_of_colors(strct);
-	invalide_wall(strct);
-	invalide_char(strct);
-	num_of_player(strct);
-}
+// void	helper(struct s_mystruct *strct)
+// {
+// 	parsing_of_clrs_txtrs(strct);
+// 	parsing_of_colors(strct);
+// 	invalide_wall(strct);
+// 	invalide_char(strct);
+// 	num_of_player(strct);
+// }
 
 void	store_map(struct s_mystruct *strct, int i)
 {
 	int	j;
 	int	l;
-	int	flag;
 
 	j = 0;
-	flag = 0;
 	l = strct->to_allocate - i;
 	if (strct->content[i] == NULL)
 		exit_error("there is no map");
 	strct->map = malloc(sizeof(char *) * (l + 1));
 	while (j < l)
 	{
-		if (!is_space(strct->content[i]) && flag == 1)
-			exit_error("there is a new line in the map");
-		if (is_space(strct->content[i]))
-			flag = 1;
 		strct->map[j] = strct->content[i];
 		i++;
 		j++;
 	}
 	strct->map[j] = NULL;
-	helper(strct);
+	parsing_of_clrs_txtrs(strct);
+	parsing_of_colors(strct);
+	invalide_wall(strct);
+	invalide_char(strct);
+	num_of_player(strct);
 }
 
 void	store_clrs_txtrs(struct s_mystruct *strct)

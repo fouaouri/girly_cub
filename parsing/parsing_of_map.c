@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:46:36 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 22:38:58 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:31:41 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,30 @@ int	invalide_wall(struct s_mystruct *strct)
 {
 	int	i;
 	int	j;
+	int	l;
 
-	j = 0;
 	strct->count_map = count_map(strct->map);
+	l = strct->count_map;
+	l--;
+	while (l > 0)
+	{
+		i = 0;
+		while (strct->map[l][i] == ' ')
+			i++;
+		if (strct->map[l][i] != '\n')
+			break ;
+		l--;
+	}
 	parse_first_line(strct);
-	while (j < strct->count_map)
+	j = 0;
+	i = 0;
+	while (j <= l)
 	{
 		i = 0;
 		while (strct->map[j][i] == ' ')
 			i++;
 		if (strct->map[j][i] == '\n')
-			new_ligne_in_map(strct, &j, i);
+			exit_error("a new line in map");
 		j++;
 	}
 	check_last_ligne(strct);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_of_clrs_txtrs.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:05:16 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 22:38:36 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:47:10 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ char	*color(char *north)
 	start = 2;
 	i = 0;
 	end = ft_strlen_(north);
-	end--;
+	end -= 2;
 	while (north[start] == ' ')
 		start++;
 	while (north[end] == ' ')
 		end--;
-	str = malloc(sizeof(char) * ((end - start) + 1));
+	str = malloc(sizeof(char) * ((end - start) + 2));
 	if (!str)
 		return (NULL);
-	while (start < end)
+	while (start <= end)
 	{
 		str[i] = north[start];
 		i++;
