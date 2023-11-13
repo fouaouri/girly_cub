@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:46:36 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/13 20:31:41 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:48:10 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,18 +111,7 @@ int	invalide_wall(struct s_mystruct *strct)
 	int	j;
 	int	l;
 
-	strct->count_map = count_map(strct->map);
-	l = strct->count_map;
-	l--;
-	while (l > 0)
-	{
-		i = 0;
-		while (strct->map[l][i] == ' ')
-			i++;
-		if (strct->map[l][i] != '\n')
-			break ;
-		l--;
-	}
+	l = new_ligne(strct);
 	parse_first_line(strct);
 	j = 0;
 	i = 0;

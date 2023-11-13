@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/13 19:41:58 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:49:34 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,8 @@ void	we_check(struct s_mystruct *strct, int j);
 void	ea_check(struct s_mystruct *strct, int j);
 void	check_comma(char *str);
 void	no_check(struct s_mystruct *strct, int j);
+int		new_ligne(struct s_mystruct *strct);
 void	exit_error(char *str);
+int		count_map(char **map);
 
 #endif
