@@ -2,37 +2,52 @@
 
 
 
-
-C 173,216,255
-
-
+    C      173,216,255        
+ 
 
 
-
-NO ./ray_casting/textures/n.xpm        
+      NO       ./ray_casting/textures/n.xpm    
 
 
 
-SO ./ray_casting/textures/s.xpm    
-
-
-
-
+    SO        ./ray_casting/textures/s.xpm      
+       
 
 
 WE ./ray_casting/textures/w.xpm
 
 
+F           200,200,200         
+ 
 
 
 
-F           200,200,200          
 
 
 
+
+
+
+ 
 
 
 EA ./ray_casting/textures/e.xpm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

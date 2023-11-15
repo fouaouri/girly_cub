@@ -6,20 +6,20 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:05:16 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/13 19:47:10 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:40:33 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ray_casting/cub3d.h"
 
-char	*color(char *north)
+char	*color(char *north, int l)
 {
 	int		start;
 	int		end;
 	char	*str;
 	int		i;
 
-	start = 2;
+	start = l + 2;
 	i = 0;
 	end = ft_strlen_(north);
 	end -= 2;
@@ -46,14 +46,14 @@ int	clrs_txtrs2(struct s_mystruct *strct, int i, int j)
 		&& strct->clrs_txtrs[j][i + 1] == 'E'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
-		we_check(strct, j);
+		we_check(strct, i, j);
 		return (0);
 	}
 	else if (strct->clrs_txtrs[j][i] == 'E'
 		&& strct->clrs_txtrs[j][i + 1] == 'A'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
-		ea_check(strct, j);
+		ea_check(strct, i, j);
 		return (0);
 	}
 	else if (strct->clrs_txtrs[j][i] == 'F'
@@ -61,7 +61,7 @@ int	clrs_txtrs2(struct s_mystruct *strct, int i, int j)
 	{
 		if (strct->f == 1)
 			free(strct->floor);
-		strct->floor = color(strct->clrs_txtrs[j]);
+		strct->floor = color(strct->clrs_txtrs[j], i);
 		strct->f++;
 		return (0);
 	}
@@ -74,14 +74,14 @@ void	clrs_txtrs1(struct s_mystruct *strct, int i, int j)
 	if (strct->clrs_txtrs[j][i] == 'N'
 		&& strct->clrs_txtrs[j][i + 1] == 'O'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
-		no_check(strct, j);
+		no_check(strct, i, j);
 	else if (strct->clrs_txtrs[j][i] == 'S'
 		&& strct->clrs_txtrs[j][i + 1] == 'O'
 		&& strct->clrs_txtrs[j][i + 2] == ' ')
 	{
 		if (strct->so == 1)
 			free(strct->south);
-		strct->south = ft_substr(strct->clrs_txtrs[j]);
+		strct->south = ft_substr(strct->clrs_txtrs[j], i);
 		strct->so++;
 	}
 	else if (strct->clrs_txtrs[j][i] == 'C'
@@ -89,7 +89,7 @@ void	clrs_txtrs1(struct s_mystruct *strct, int i, int j)
 	{
 		if (strct->c == 1)
 			free(strct->ceiling);
-		strct->ceiling = color(strct->clrs_txtrs[j]);
+		strct->ceiling = color(strct->clrs_txtrs[j], i);
 		strct->c++;
 	}
 	else if (clrs_txtrs2(strct, i, j) == 1)

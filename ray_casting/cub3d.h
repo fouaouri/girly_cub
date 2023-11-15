@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 03:13:21 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/13 20:49:34 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:57:41 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,10 +203,10 @@ void	check_last_ligne(struct s_mystruct *strct);
 void	new_ligne_in_map(struct s_mystruct *strct, int *j, int i);
 void	count_to_allocate(int fd1, int i, char *str, struct s_mystruct *strct);
 int		close_win(void);
-void	we_check(struct s_mystruct *strct, int j);
-void	ea_check(struct s_mystruct *strct, int j);
+void	we_check(struct s_mystruct *strct, int i, int j);
+void	ea_check(struct s_mystruct *strct, int i, int j);
 void	check_comma(char *str);
-void	no_check(struct s_mystruct *strct, int j);
+void	no_check(struct s_mystruct *strct, int i, int j);
 int		new_ligne(struct s_mystruct *strct);
 void	exit_error(char *str);
 int		count_map(char **map);

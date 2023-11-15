@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:53:29 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/11 00:44:52 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:58:00 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen_(char *str)
 	return (i);
 }
 
-char	*ft_substr(char *north)
+char	*ft_substr(char *north, int l)
 {
 	int		start;
 	int		end;
@@ -30,7 +30,7 @@ char	*ft_substr(char *north)
 	int		i;
 	int		len;
 
-	start = 3;
+	start = l + 3;
 	i = 0;
 	end = ft_strlen_(north);
 	end -= 2;

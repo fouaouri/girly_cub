@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:44:29 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/10 19:15:08 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:57:07 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strnstr(const char *hyst, const char *ndl, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
-char	*ft_substr(char *north);
+char	*ft_substr(char *north, int i);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_itoa(int n);
 char	*ft_strtrim(char const *s1, char const *set);
