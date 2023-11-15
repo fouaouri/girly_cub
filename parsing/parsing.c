@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:39:37 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/11 22:43:26 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:35:24 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	parsing(char *file, int count, struct s_mystruct *strct)
 	if (j == 0)
 		strct->to_allocate++;
 	count_to_allocate(fd1, i, str, strct);
+	if (strct->file[0] == NULL)
+		return ;
 	second_parsing(strct);
 }
 

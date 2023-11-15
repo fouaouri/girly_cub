@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fouaouri <fouaouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:23:37 by fouaouri          #+#    #+#             */
-/*   Updated: 2023/11/11 22:45:34 by fouaouri         ###   ########.fr       */
+/*   Updated: 2023/11/15 21:16:07 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	init_mlx(t_builders *param)
 	int	w;
 
 	param->mlx = mlx_init();
-	param->mlx_win = mlx_new_window(param->mlx, WIN_WIDTH, WIN_HEIGHT, "CHAMA");
 	param->image_north = mlx_xpm_file_to_image(param->mlx,
 			param->pars->north, &h, &w);
 	param->image_s = mlx_xpm_file_to_image(param->mlx,
@@ -79,6 +78,7 @@ void	init_mlx(t_builders *param)
 	if (!param->image_north || !param->image_w
 		|| !param->image_s || !param->image_e)
 		exit_error("Invalide texture .. try again !!");
+	param->mlx_win = mlx_new_window(param->mlx, WIN_WIDTH, WIN_HEIGHT, "CHAMA");
 }
 
 void	loop_mlx(t_builders *param)

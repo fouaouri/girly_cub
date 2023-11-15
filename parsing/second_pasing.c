@@ -6,7 +6,7 @@
 /*   By: nben-ais <nben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:29:13 by nben-ais          #+#    #+#             */
-/*   Updated: 2023/11/15 14:46:37 by nben-ais         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:35:16 by nben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,6 @@ void	num_of_player(struct s_mystruct *strct)
 		exit_error("the player should be one");
 }
 
-// void	helper(struct s_mystruct *strct)
-// {
-// 	parsing_of_clrs_txtrs(strct);
-// 	parsing_of_colors(strct);
-// 	invalide_wall(strct);
-// 	invalide_char(strct);
-// 	num_of_player(strct);
-// }
-
 void	store_map(struct s_mystruct *strct, int i)
 {
 	int	j;
@@ -68,6 +59,7 @@ void	store_map(struct s_mystruct *strct, int i)
 	invalide_wall(strct);
 	invalide_char(strct);
 	num_of_player(strct);
+	check_space_(strct->square_map);
 }
 
 void	store_clrs_txtrs(struct s_mystruct *strct)
@@ -78,7 +70,7 @@ void	store_clrs_txtrs(struct s_mystruct *strct)
 	i = 0;
 	j = 0;
 	strct->clrs_txtrs = malloc(sizeof(char *) * 7);
-	while (i < 6)
+	while (strct->content[j] && i < 6)
 	{
 		strct->clrs_txtrs[i] = strct->content[j];
 		i++;
